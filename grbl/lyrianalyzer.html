@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex">
-    <title>Lyrianalyzer</title>
+    <title>Lyrianalyzer Docs</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body class="dark">
@@ -91,7 +91,7 @@
     <ul>
         <li>key: RaidHistoryList
             <ul>
-                <li>addRaidHistoryList()</li>
+                <li>addRaidHistoryList(newRaidId)</li>
                 <li>getRaidHistoryList()</li>
             </ul>
         </li>
@@ -104,8 +104,27 @@
         <li>key: RaidDetail_{raid_id}
             <ul>
                 <li>addRaidDetail(startObject |abilityObject | attackObject)</li>
-                <li>getRaidInfo(raidId)</li>
+                <li>getRaidDetail(raidId)</li>
             </ul>
+        </li>
+    </ul>
+    <h3>分析</h3>
+    <p>lyrianalyzer.htmlで確認できるやつ</p>
+    <ul>
+        <li>キャラクター別ダメージ分析
+            <ul>
+                <li>総アビリティダメージ</li>
+                <li>総通常攻撃ダメージ
+                    <ul>
+                        <li>総追撃ダメージ</li>
+                        <li>平均連撃回数</li>
+                    </ul>
+                </li>
+                <li>総奥義ダメージ</li>
+            </ul>
+        </li>
+        <li>
+            ターン別行動分析(気が向いたら実装する)
         </li>
     </ul>
     <script src="../theme.js"></script>
