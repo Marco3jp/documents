@@ -3,7 +3,6 @@ const mkdirp = require('mkdirp')
 import {config} from "../config";
 import * as fs from "fs";
 
-
 const splitDir = __dirname.split("/");
 
 // TODO: プロジェクトルートの実装が他に思い浮かばないので誰か頼んだ
@@ -17,11 +16,11 @@ splitDir.forEach(dirname => {
 
 const outDir = projectRoot + config.out_dir;
 
-loadFile(config.markdown_dir);
+processFiles(config.markdown_dir);
 
 copyFiles();
 
-function loadFile(relativePath: string) {
+function processFiles(relativePath: string) {
     const files = fs.readdirSync(projectRoot + relativePath);
     files.forEach(file => {
         if (file.includes(".md")) {
@@ -29,7 +28,7 @@ function loadFile(relativePath: string) {
         } else if (file.includes(".html")) {
             exportHTML(relativePath + "/", file, true);
         } else {
-            loadFile(relativePath + "/" + file);
+            processFiles(relativePath + "/" + file);
         }
     })
 }
@@ -43,7 +42,6 @@ function exportHTML(relativeDirPath: string, fileName: string, disableConvert: b
         exportDirPath += "/" + path;
     });
 
-
     let sourceCode = "";
 
     if (disableConvert) {
@@ -55,7 +53,6 @@ function exportHTML(relativeDirPath: string, fileName: string, disableConvert: b
     }
 
     sourceCode = mergeTemplate(sourceCode, exportDirPath.split("/").length - 2);
-
 
     mkdirp(outDir + exportDirPath).then(() => {
         fs.writeFileSync(outDir + exportDirPath + fileName, sourceCode);
@@ -71,11 +68,10 @@ function mergeTemplate(convertedString: string, depth: number): string {
     for (let i = 0; i < depth; i++) {
         relativePathToken += "../";
     }
-    const relativePathRegex = new RegExp(config.template.replace_token.relative_path, 'g');
-    return template.replace(relativePathRegex, relativePathToken);
+    return template.replace(new RegExp(config.template.replace_token.relative_path, 'g'), relativePathToken);
 }
 
-function preReplace(template) {
+function preReplace(template): string {
     template = template.replace(config.template.replace_token.css, config.template.css)
     template = template.replace(config.template.replace_token.js.theme, config.template.js.theme);
     return template;
