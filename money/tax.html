@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ Title }}</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1>おかね〜</h1>
+<h2>前置き</h2>
+<p>書いてる人は専門家じゃないので間違ってるかもしれないので、適当にリンク先とか見てね。</p>
+<p>あと、これは扶養周りのチェックがメインなので、おそらく普通に自立されている方には関係ないかもしれないよ。</p>
+<p>ここでは汎用性のために基礎控除しか考えていないので、もし給与なのであればいい感じに調整したりしてね。</p>
+<h2>テーブル</h2>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>所得税</th>
+        <th>住民税</th>
+        <th>扶養判定</th>
+        <th>健康保険</th>
+        <th>年金</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>条件</th>
+        <td>38万円(所得)</td>
+        <td>38万円(前年の所得)</td>
+        <td>38万円(所得)</td>
+        <td>130万(年収)</td>
+        <td>118万(所得)</td>
+    </tr>
+    <tr>
+        <td>超えた場合</td>
+        <td>※1</td>
+        <td>10.025% + 6200円(※2)</td>
+        <td>扶養者の控除が消失</td>
+        <td>約1万/月〜</td>
+        <td>未計算</td>
+    </tr>
+    </tbody>
+</table>
+
+<p>※1: 195万円以下: 5%, 330万円以下: 10% - 97500円...</p>
+<p>※2: 内訳: 市民税 8% + 4,400円 県民税 2.025% + 1,800円</p>
+
+<h2>参考</h2>
+<p>所得税：<a href="https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_1.htm">https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_1.htm</a>
+</p>
+<p>住民税：<a
+        href="https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html">https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html</a>
+</p>
+<p>健康保険：<a href="https://www.nenkin.go.jp/service/kounen/jigyosho-hiho/hihokensha1/20141204-02.html">https://www.nenkin.go.jp/service/kounen/jigyosho-hiho/hihokensha1/20141204-02.html</a>
+</p>
+<p>年金：<a href="https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html">https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html</a>
+</p>
+
+<p>参考：<a href="https://www.lancers.jp/magazine/30074">https://www.lancers.jp/magazine/30074</a></p>
+<p>他にも <a href="https://freee.co.jp">https://freee.co.jp</a> や <a href="https://biz.moneyforward.com">https://biz.moneyforward.com</a>
+    なども記事出してくれてるので参考になった。</p>
+
+
+    <script src="../theme.js"></script>
+</div>
+</body>
+</html>

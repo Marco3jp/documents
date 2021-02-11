@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ Title }}</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1>Lyrianalyzerの話</h1>
+<h2>これなに</h2>
+<p>実践でダメージ周りの分析したいってことで開発しているツール</p>
+<h2>仕様</h2>
+<h3>データ構造</h3>
+<p>Background.jsでchrome.storage.localに保存される(<a href="#io">後述</a>)。</p>
+<ul>
+    <li>RaidHistoryList
+        <ul>
+            <li>リスト表示用のraid_id一覧</li>
+            <li>基本的にはRaidInfoから情報を引っ張るはず</li>
+        </ul>
+    </li>
+    <li>RaidInfo_{raid_id}
+        <ul>
+            <li>敵の名前とか編成が入ってる</li>
+        </ul>
+    </li>
+    <li>
+        RaidDetail_{raid_id}
+        <ul>
+            <li>実際の戦いの情報</li>
+            <li>具体的にはArrayでターン毎の情報が含まれる</li>
+            <li>ターン毎の情報については<a href="#turn">後述</a></li>
+        </ul>
+    </li>
+</ul>
+<h3 id="situation">situation, 再現情報</h3>
+<ul>
+    <li>character(Array), キャラクターごと
+        <ul>
+            <li>health, 味方HP</li>
+            <li>ultGauge, 奥義ゲージ</li>
+            <li>ct(Array), アビCT</li>
+        </ul>
+    </li>
+    <li>summonCt(Array), 石CT</li>
+    <li>potion, ポーション(未定)</li>
+    <li>boss(Array) 敵
+        <ul>
+            <li>healthPercentage, 敵HP%</li>
+            <li>modeGauge, MODEゲージ</li>
+            <li>ct, 敵CT</li>
+        </ul>
+    </li>
+</ul>
+<h3 id="turn">ターン毎の情報</h3>
+<ul>
+    <li>ability(Array)
+        <ul>
+            <li>from, 誰が発動させたか</li>
+            <li>name, アビリティ名</li>
+            <li>damage, ダメージ</li>
+            <li>heal, 回復</li>
+            <li>デバフやバフは追跡できなさそうなので放置</li>
+            <li><a href="#situation">situation</a>, アビ後の状況</li>
+        </ul>
+    </li>
+    <li>
+        attack(Array)
+        <ul>
+            <li>from, 誰の攻撃か</li>
+            <li>
+                damage(Array), 連撃ごとにダメージ
+                <ul>
+                    <li>base, 基本ダメージ</li>
+                    <li>additional(Array) 追撃ダメージ</li>
+                </ul>
+            </li>
+            <li>ultDamage, 奥義ダメージ</li>
+            <li>ultAdditionalDamage 奥義追加ダメージ(未定)</li>
+            <li>chainBurst, チェンバ(未定)</li>
+            <li>ability, トリガ系アビ(未定)</li>
+            <li><a href="#situation">situation</a>, 殴り終えた時の状況</li>
+        </ul>
+    </li>
+</ul>
+<h3 id="io">読み書き</h3>
+<p>chrome.storageの仕様的にCreateではなくUpdateとReadの実装をする</p>
+<ul>
+    <li>key: RaidHistoryList
+        <ul>
+            <li>addRaidHistoryList(newRaidId)</li>
+            <li>getRaidHistoryList()</li>
+        </ul>
+    </li>
+    <li>key: RaidInfo_{raid_id}
+        <ul>
+            <li>addRaidInfo(startObject)</li>
+            <li>getRaidInfo(raidId)</li>
+        </ul>
+    </li>
+    <li>key: RaidDetail_{raid_id}
+        <ul>
+            <li>addRaidDetail(startObject |abilityObject | attackObject)</li>
+            <li>getRaidDetail(raidId)</li>
+        </ul>
+    </li>
+</ul>
+<h3>分析</h3>
+<p>lyrianalyzer.htmlで確認できるやつ</p>
+<ul>
+    <li>キャラクター別ダメージ分析
+        <ul>
+            <li>総アビリティダメージ</li>
+            <li>総通常攻撃ダメージ
+                <ul>
+                    <li>総追撃ダメージ</li>
+                    <li>平均連撃回数</li>
+                </ul>
+            </li>
+            <li>総奥義ダメージ</li>
+        </ul>
+    </li>
+    <li>
+        ターン別行動分析(気が向いたら実装する)
+    </li>
+</ul>
+
+    <script src="../theme.js"></script>
+</div>
+</body>
+</html>
