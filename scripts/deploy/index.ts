@@ -85,6 +85,8 @@ function copyFiles() {
     let css = fs.readFileSync(projectRoot + config.template.dir + "/" + config.template.css, {encoding: "utf8"});
     let theme = fs.readFileSync(projectRoot + config.template.dir + "/" + config.template.js.theme, {encoding: "utf8"});
 
-    fs.writeFileSync(projectRoot + config.out_dir + "/" + config.template.css, css);
-    fs.writeFileSync(projectRoot + config.out_dir + "/" + config.template.js.theme, theme);
+    mkdirp(outDir).then(() => {
+        fs.writeFileSync(outDir + "/" + config.template.css, css);
+        fs.writeFileSync(outDir + "/" + config.template.js.theme, theme);
+    });
 }
