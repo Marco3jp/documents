@@ -8,20 +8,20 @@ const splitDir = __dirname.split("/");
 // TODO: プロジェクトルートの実装が他に思い浮かばないので誰か頼んだ
 splitDir.splice(splitDir.length - 2, 2);
 
-let projectRoot = "";
+let PROJECT_ROOT = "";
 
 splitDir.forEach(dirname => {
-    projectRoot += dirname + "/";
+    PROJECT_ROOT += dirname + "/";
 })
 
-const outDir = projectRoot + config.out_dir;
+const OUT_DIR = PROJECT_ROOT + config.out_dir;
 
 processFiles(config.markdown_dir);
 
 copyFiles();
 
 function processFiles(relativePath: string) {
-    const files = fs.readdirSync(projectRoot + relativePath);
+    const files = fs.readdirSync(PROJECT_ROOT + relativePath);
     files.forEach(file => {
         if (file.includes(".md")) {
             exportHTML(relativePath + "/", file);
@@ -34,7 +34,7 @@ function processFiles(relativePath: string) {
 }
 
 function exportHTML(relativeDirPath: string, fileName: string, disableConvert: boolean = false) {
-    const file = fs.readFileSync(projectRoot + relativeDirPath + fileName, {encoding: "utf8"});
+    const file = fs.readFileSync(PROJECT_ROOT + relativeDirPath + fileName, {encoding: "utf8"});
     let exportDirPath = ""
     let paths = relativeDirPath.split("/");
     paths.splice(0, 1);
@@ -54,13 +54,13 @@ function exportHTML(relativeDirPath: string, fileName: string, disableConvert: b
 
     sourceCode = mergeTemplate(sourceCode, exportDirPath.split("/").length - 2);
 
-    mkdirp(outDir + exportDirPath).then(() => {
-        fs.writeFileSync(outDir + exportDirPath + fileName, sourceCode);
+    mkdirp(OUT_DIR + exportDirPath).then(() => {
+        fs.writeFileSync(OUT_DIR + exportDirPath + fileName, sourceCode);
     })
 }
 
 function mergeTemplate(convertedString: string, depth: number): string {
-    let template = fs.readFileSync(projectRoot + config.template.dir + "/" + config.template.html, {encoding: "utf8"});
+    let template = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.html, {encoding: "utf8"});
     template = preReplace(template);
 
     template = template.replace(config.template.replace_token.converted_markdown, convertedString);
@@ -78,11 +78,11 @@ function preReplace(template): string {
 }
 
 function copyFiles() {
-    let css = fs.readFileSync(projectRoot + config.template.dir + "/" + config.template.css, {encoding: "utf8"});
-    let theme = fs.readFileSync(projectRoot + config.template.dir + "/" + config.template.js.theme, {encoding: "utf8"});
+    let css = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.css, {encoding: "utf8"});
+    let theme = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.js.theme, {encoding: "utf8"});
 
-    mkdirp(outDir).then(() => {
-        fs.writeFileSync(outDir + "/" + config.template.css, css);
-        fs.writeFileSync(outDir + "/" + config.template.js.theme, theme);
+    mkdirp(OUT_DIR).then(() => {
+        fs.writeFileSync(OUT_DIR + "/" + config.template.css, css);
+        fs.writeFileSync(OUT_DIR + "/" + config.template.js.theme, theme);
     });
 }
