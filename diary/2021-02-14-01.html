@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ Title }}</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1 id="20210214">のーたいとる（2021-02-14版）</h1>
+<p>テスト代わりにちょっとこっちで書いてみるよ。書く内容はここの話。</p>
+<p>編集機能についてかなり悩んでいているのでどうしよう。SPAと純HTML主義は相容れない（厳密には極端にめんどくさい）ので、どちらを取るかという感じ。</p>
+<p>まあ名前の通りに文書を書くところなので、今回は純HTML主義に近づくようにCSS/JS無効化しても閲覧できるようにしたいですね。（流石に編集まで純HTMLにするのは後回し）</p>
+<p>あ～なんか治安の良い話ばっか書くの楽しくないな。なんか事前生成するタイプのCMSって感じに成長していけそうなので、CDNとかも通してパフォーマンス面の利点活かせるようにしたいですね。</p>
+<p>となるとSEOも考えて、HTMLに則るのがいいな。もともと私自身が純HTML主義なのでここで活きてきて嬉しい。</p>
+<p>でもなんか、編集の実装とかどうやってSPAじゃなくて効率よく転送するかは検討したい欲があって、その検討にめちゃくちゃ悩んでいる。</p>
+<p>WebComponentとかShadowDOMの知識に乏しくて、DOM操作のコストがさくっと出てこないので、編集画面だけキャッシュできるように別ファイルに分離する手法がよくわからないんですよね。</p>
+<p>あ～～～とおもって色々書いてて思い出したけど、Vueとかも <code>&lt;div id="hoge"&gt;&lt;/div&gt;</code> に対して <code>el: '#hoge'</code> みたいな感じでrenderの指定してましたね…… <code>editor.app.js</code> に吐き出して各HTMLに <code>&lt;div id="editor"&gt;&lt;/div&gt;</code> で動かせばいいのか。</p>
+<p>せっかくだし <a href="https://svelte.dev/">Svelte</a> 使ってみようかなと思っていたので、技術的に可能かチェックしてこれでやってみようかな。</p>
+<p>tagsは未実装なので試しに下に置いておきます。どうやって変換しようかな……。metaタグの仕様があんまわかってないんだけどHTMLのプロパティって勝手に拡張してええんか？？　data属性使うもんなんじゃないのか？？？</p>
+<h2 id="tags">tags</h2>
+<ul>
+<li>のーたいとる</li>
+</ul>
+    <script src="../theme.js"></script>
+</div>
+</body>
+</html>
