@@ -24,16 +24,16 @@ function processFiles(relativePath: string) {
     const files = fs.readdirSync(PROJECT_ROOT + relativePath);
     files.forEach(file => {
         if (file.includes(".md")) {
-            exportHTML(relativePath + "/", file);
-        } else if (file.includes(".html")) {
             exportHTML(relativePath + "/", file, true);
+        } else if (file.includes(".html")) {
+            exportHTML(relativePath + "/", file);
         } else {
             processFiles(relativePath + "/" + file);
         }
     })
 }
 
-function exportHTML(relativeDirPath: string, fileName: string, disableConvert: boolean = false) {
+function exportHTML(relativeDirPath: string, fileName: string, enableConvert: boolean = false) {
     const file = fs.readFileSync(PROJECT_ROOT + relativeDirPath + fileName, {encoding: "utf8"});
     let exportDirPath = ""
     let paths = relativeDirPath.split("/");
@@ -44,12 +44,12 @@ function exportHTML(relativeDirPath: string, fileName: string, disableConvert: b
 
     let sourceCode = "";
 
-    if (disableConvert) {
-        sourceCode = file;
-    } else {
+    if (enableConvert) {
         const converter = new showdown.Converter();
         sourceCode = converter.makeHtml(file);
         fileName = fileName.replace(".md", ".html");
+    } else {
+        sourceCode = file;
     }
 
     sourceCode = mergeTemplate(sourceCode, exportDirPath.split("/").length - 2);
