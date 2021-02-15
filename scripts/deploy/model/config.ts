@@ -1,6 +1,11 @@
 export default interface DeployConfig {
     markdown_dir: string,
-    out_dir: string
+    out_dir: string,
+    list: {
+        // TODO: ネストに対応する(ページに飛べなくなる)
+        dir: string,
+        file_name: string
+    },
     template: {
         dir: string,
         html: string,
@@ -22,6 +27,10 @@ export default interface DeployConfig {
 export const defaultDeployConfig: DeployConfig = {
     markdown_dir: "md",
     out_dir: "dist",
+    list: {
+        dir: "",
+        file_name: "list.html",
+    },
     template: {
         dir: 'template',
         html: 'template.html',
