@@ -61,7 +61,7 @@ function exportHTML(relativeDirPath: string, fileName: string, disableConvert: b
 
 function mergeTemplate(convertedString: string, depth: number): string {
     let template = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.html, {encoding: "utf8"});
-    template = preReplace(template);
+    template = replaceTokens(template);
 
     template = template.replace(config.template.replace_token.converted_markdown, convertedString);
     let relativePathToken = "";
@@ -71,7 +71,7 @@ function mergeTemplate(convertedString: string, depth: number): string {
     return template.replace(new RegExp(config.template.replace_token.relative_path, 'g'), relativePathToken);
 }
 
-function preReplace(template): string {
+function replaceTokens(template): string {
     template = template.replace(config.template.replace_token.css, config.template.css)
     template = template.replace(config.template.replace_token.js.theme, config.template.js.theme);
     return template;
