@@ -97,6 +97,8 @@ export class Converter {
         template = this.replaceTokens(template);
 
         template = template.replace(config.template.replace_token.converted_markdown, convertedString);
+        template = template.replace(config.template.replace_token.title, /<h1.*>(?<title>.*)<\/h1>/.exec(convertedString).groups.title ?? 'no title');
+
         let relativePathToken = "";
         for (let i = 0; i < depth; i++) {
             relativePathToken += "../";
