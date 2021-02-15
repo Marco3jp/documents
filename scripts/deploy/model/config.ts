@@ -14,6 +14,7 @@ export default interface DeployConfig {
             theme: string,
         },
         replace_token: {
+            title: string,
             css: string,
             js: {
                 theme: string,
@@ -39,6 +40,7 @@ export const defaultDeployConfig: DeployConfig = {
             theme: 'theme.js',
         },
         replace_token: {
+            title: "{{ title }}",
             css: "{{ template_css }}",
             js: {
                 theme: "{{ template_js_theme }}"
