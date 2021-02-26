@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import {config} from "../config";
 import {Article} from "./model/article";
+import {loadFile, saveFile} from "./utils";
 
 const showdown = require('showdown');
-const mkdirp = require('mkdirp')
 
 export class Converter {
     projectRoot: string;
@@ -24,7 +24,7 @@ export class Converter {
                 let sourceCodeBody: string;
                 let enableConvert = fileName.includes(".md");
                 let convertedFileName = fileName.includes(".md") ? fileName.replace(".md", ".html") : fileName;
-                const fileBody = this.loadFile(this.projectRoot + relativePath + "/", fileName);
+                const fileBody = loadFile(this.projectRoot + relativePath + "/", fileName);
 
                 sourceCodeBody = this.exportHTMLBody(fileBody, enableConvert);
 
@@ -36,29 +36,20 @@ export class Converter {
                 });
 
                 const sourceCode = this.mergeTemplate(sourceCodeBody, [...exportDirPath.matchAll(/\//g)].length);
-                this.saveFile(this.outDir + exportDirPath + "/", convertedFileName, sourceCode);
+                saveFile(this.outDir + exportDirPath + "/", convertedFileName, sourceCode);
 
                 const title: string | undefined = /<h1.*>(?<title>.*)<\/h1>/.exec(sourceCode).groups.title;
 
                 this.exportList("." + exportDirPath + "/", convertedFileName, title ?? convertedFileName);
             } else {
+                // TODO: ディレクトリであるかチェックして
                 this.processFiles(relativePath + "/" + fileName);
             }
         });
 
         const articleListPageBody = this.createArticleListPage();
         const articleListPage = this.mergeTemplate(articleListPageBody, [...config.list.dir.matchAll(/\//g)].length);
-        this.saveFile(this.projectRoot + config.out_dir + "/" + config.list.dir, config.list.file_name, articleListPage);
-    }
-
-    loadFile(dirPath: string, fileName: string): string {
-        return fs.readFileSync(dirPath + fileName, {encoding: "utf8"});
-    }
-
-    saveFile(dirPath: string, fileName: string, data: string) {
-        mkdirp(dirPath).then(() => {
-            fs.writeFileSync(dirPath + fileName, data);
-        })
+        saveFile(this.projectRoot + config.out_dir + "/" + config.list.dir, config.list.file_name, articleListPage);
     }
 
     exportHTMLBody(fileBody: string, enableConvert: boolean = false): string {
@@ -111,7 +102,4 @@ export class Converter {
         template = template.replace(config.template.replace_token.js.theme, config.template.js.theme);
         return template;
     }
-
 }
-
-
