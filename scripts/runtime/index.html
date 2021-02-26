@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="src/assets/style.css">
+    <title>Vite App</title>
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1>sample</h1>
+    <p>sample text.</p>
+    <div id="editor"></div>
+    <div id="menu-wrapper">
+        <span>Menu</span>
+        <ul id="menu"></ul>
+    </div>
+    <script>
+        document.querySelector("#menu-wrapper").addEventListener("click", () => {
+            document.querySelector("#menu").classList.toggle("open")
+        })
+    </script>
+    <!--script type="module" src="src/assets/theme.js"></script-->
+    <script type="module" src="/src/main.ts"></script>
+</div>
+</body>
+</html>
