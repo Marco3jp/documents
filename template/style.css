@@ -88,3 +88,19 @@ th, td {
 .dark a:visited {
     color: #00BCD4;
 }
+
+#menu-wrapper {
+    position: absolute;
+    top: 24px;
+    left: 36px;
+    opacity: 0.5;
+}
+
+#menu:not(.open) {
+    display: none;
+}
+
+#menu {
+    list-style: none;
+    padding-left: 0;
+}
