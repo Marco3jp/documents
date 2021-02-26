@@ -34,7 +34,7 @@ export default class Duplicator {
                     exportDirPath += "/" + path;
                 });
 
-                const manuscriptPath = this.outDir + exportDirPath + "/" + config.manuscript_dir + "/";
+                const manuscriptPath = this.outDir + exportDirPath + "/" + config.manuscript_out_dir + "/";
 
                 mkdirp(manuscriptPath).then(() => {
                     fs.copyFileSync(this.projectRoot + relativePath + "/" + fileName, manuscriptPath + fileName);

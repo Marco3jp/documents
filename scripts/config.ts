@@ -2,11 +2,11 @@ import DeployConfig, {defaultDeployConfig} from "./deploy/model/config";
 import RuntimeConfig, {defaultRuntimeConfig} from "./runtime/model/config";
 
 export interface CommonConfig {
-    manuscript_dir: string
+    manuscript_out_dir: string
 }
 
 export const defaultCommonConfig: CommonConfig = {
-    manuscript_dir: "manuscript"
+    manuscript_out_dir: "manuscript"
 }
 
 export const config: DeployConfig & RuntimeConfig & CommonConfig = {
