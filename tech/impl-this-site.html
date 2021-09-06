@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>このサイトの実装の話</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1 id="このサイトの実装の話">このサイトの実装の話</h1>
+<p>書き途中 &amp; 実装途中なので雑に書いてる</p>
+<h2 id="deploy">deploy</h2>
+<p>このページを生成するスクリプトが動いている。具体的には、masterにコードがプッシュされるとGitHub Actionsが動き出して、scripts/deployにあるコードを実行する。
+ざっくり処理としてはmd to htmlをしていて、それに自分が書いたcssとかテーマ機構、コードハイライトのcssをインジェクトする感じ。
+ちなみに2021年の9月6日~9月7日にかけてshowdownというライブラリからmarkedというライブラリに置き換えて、比較的メンテされていそうな体制になってきている。</p>
+
+    <script src="../theme.js"></script>
+</div>
+</body>
+</html>
