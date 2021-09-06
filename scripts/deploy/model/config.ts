@@ -10,12 +10,14 @@ export default interface DeployConfig {
         dir: string,
         html: string,
         css: string,
+        highlight_css: string,
         js: {
             theme: string,
         },
         replace_token: {
             title: string,
             css: string,
+            highlight_css: string,
             js: {
                 theme: string,
             }
@@ -36,12 +38,14 @@ export const defaultDeployConfig: DeployConfig = {
         dir: 'template',
         html: 'template.html',
         css: 'style.css',
+        highlight_css: 'highlight.css',
         js: {
             theme: 'theme.js',
         },
         replace_token: {
             title: "{{ title }}",
             css: "{{ template_css }}",
+            highlight_css: "{{ template_highlight_css }}",
             js: {
                 theme: "{{ template_js_theme }}"
             },

@@ -26,9 +26,18 @@ copyFiles();
 function copyFiles() {
     let css = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.css, {encoding: "utf8"});
     let theme = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.js.theme, {encoding: "utf8"});
+    let highlightCSS;
+
+    if (config.template.highlight_css !== '') {
+        highlightCSS = fs.readFileSync(PROJECT_ROOT + config.template.dir + "/" + config.template.highlight_css, {encoding: "utf8"});
+    }
 
     mkdirp(OUT_DIR).then(() => {
         fs.writeFileSync(OUT_DIR + "/" + config.template.css, css);
         fs.writeFileSync(OUT_DIR + "/" + config.template.js.theme, theme);
+
+        if (highlightCSS) {
+            fs.writeFileSync(OUT_DIR + "/" + config.template.highlight_css, highlightCSS);
+        }
     });
 }

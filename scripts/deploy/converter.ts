@@ -1,10 +1,12 @@
 import * as fs from "fs";
 import {config} from "../config";
 import {Article} from "./model/article";
+import {markedConfig} from "./marked.config";
 
-const showdown = require('showdown');
-const mkdirp = require('mkdirp')
+const marked = require('marked');
+const mkdirp = require('mkdirp');
 
+// TODO: Converterのくせになんでもかんでもやり過ぎなので流石に分割したい
 export class Converter {
     projectRoot: string;
     outDir: string;
@@ -35,7 +37,9 @@ export class Converter {
                     exportDirPath += "/" + path;
                 });
 
-                const sourceCode = this.mergeTemplate(sourceCodeBody, [...exportDirPath.matchAll(/\//g)].length);
+                const isHighlight = /```\S{1,4}/.test(fileBody)
+
+                const sourceCode = this.mergeTemplate(sourceCodeBody, [...exportDirPath.matchAll(/\//g)].length, isHighlight);
                 this.saveFile(this.outDir + exportDirPath + "/", convertedFileName, sourceCode);
 
                 const title: string | undefined = /<h1.*>(?<title>.*)<\/h1>/.exec(sourceCode).groups.title;
@@ -65,8 +69,7 @@ export class Converter {
         let sourceCode = "";
 
         if (enableConvert) {
-            const converter = new showdown.Converter();
-            sourceCode = converter.makeHtml(fileBody);
+            sourceCode = marked(fileBody, markedConfig);
         } else {
             sourceCode = fileBody;
         }
@@ -92,12 +95,16 @@ export class Converter {
         return sourceCodeBody;
     }
 
-    mergeTemplate(convertedString: string, depth: number): string {
+    mergeTemplate(convertedString: string, depth: number, isHighlight: boolean = false): string {
         let template = fs.readFileSync(this.projectRoot + config.template.dir + "/" + config.template.html, {encoding: "utf8"});
         template = this.replaceTokens(template);
 
         template = template.replace(config.template.replace_token.converted_markdown, convertedString);
         template = template.replace(config.template.replace_token.title, /<h1.*>(?<title>.*)<\/h1>/.exec(convertedString).groups.title ?? 'no title');
+
+        // ハイライトが不要なページでは読み込まないようにしている……が、いい感じにしたい
+        template = template.replace(config.template.replace_token.highlight_css,
+            isHighlight ? `<link rel="stylesheet" type="text/css" href="{{ relative_path }}${config.template.highlight_css}">` : '');
 
         let relativePathToken = "";
         for (let i = 0; i < depth; i++) {
@@ -106,12 +113,9 @@ export class Converter {
         return template.replace(new RegExp(config.template.replace_token.relative_path, 'g'), relativePathToken);
     }
 
-    replaceTokens(template): string {
+    replaceTokens(template: string): string {
         template = template.replace(config.template.replace_token.css, config.template.css)
         template = template.replace(config.template.replace_token.js.theme, config.template.js.theme);
         return template;
     }
-
 }
-
-
