@@ -2,8 +2,8 @@ import * as fs from "fs";
 import {config} from "../config";
 import {Article} from "./model/article";
 
-const showdown = require('showdown');
-const mkdirp = require('mkdirp')
+const marked = require('marked');
+const mkdirp = require('mkdirp');
 
 export class Converter {
     projectRoot: string;
@@ -65,8 +65,7 @@ export class Converter {
         let sourceCode = "";
 
         if (enableConvert) {
-            const converter = new showdown.Converter();
-            sourceCode = converter.makeHtml(fileBody);
+            sourceCode = marked(fileBody);
         } else {
             sourceCode = fileBody;
         }
