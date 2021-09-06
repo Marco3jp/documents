@@ -5,34 +5,51 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>サンプル</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../highlight.css">
 </head>
 <body class="dark">
 <div id="wrapper">
-    <h1 id="">サンプル</h1>
-<h2 id="-1">はじめに</h2>
+    <h1 id="サンプル">サンプル</h1>
+<h2 id="はじめに">はじめに</h2>
 <p>これはサンプルのやつです。どういうことかわからんと思うけど、まあそういうことです。</p>
-<h2 id="-2">それはそうと</h2>
+<h2 id="それはそうと">それはそうと</h2>
 <p>ちゃんと出力されているんでしょうか？　<strong>わたし、気になります！！</strong></p>
-<h3 id="-3">リスト</h3>
+<h3 id="リスト">リスト</h3>
 <ul>
 <li>ほげ</li>
 <li>ふが</li>
 </ul>
-<ol>
+<ol start="0">
 <li>あああ</li>
 <li>いいい</li>
 <li>ううう</li>
 </ol>
-<h3 id="-4">リンク</h3>
+<h3 id="リンク">リンク</h3>
 <p><a href="https://example.com">リンク</a></p>
-<h3 id="-5">ほか</h3>
-<p>~~ああ~~ <em>aa</em></p>
-<p><code>let sample = "value";</code></p>
+<h3 id="ほか">ほか</h3>
+<p><del>ああ</del> <em>aa</em></p>
+<p><code>let sample = &quot;value&quot;;</code></p>
 <pre><code>&lt;p&gt;sample&lt;/p&gt;
 &lt;div&gt;
   &lt;span&gt;hoge&lt;/span&gt;
 &lt;/div&gt;
 </code></pre>
+<pre><code class="hljs language-markdown"><span class="hljs-bullet">-</span> highlight
+<span class="hljs-bullet">-</span> markdown
+</code></pre>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;and programing languages XD&quot;</span>;
+
+<span class="hljs-comment">/**
+ * super ultra great godlike doc...
+ */</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message);
+</code></pre>
+<pre><code class="hljs language-shell"><span class="hljs-meta">$ </span><span class="language-bash">git add :/md/sample/markdown.md</span>
+<span class="hljs-meta">$ </span><span class="language-bash">git commit -m <span class="hljs-string">&quot;add samples&quot;</span></span>
+[replace-showdown-to-marked unknown] add samples
+ 1 files changed, 21 insertions(+)
+</code></pre>
+
     <script src="../theme.js"></script>
 </div>
 </body>
