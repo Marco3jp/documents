@@ -8,7 +8,9 @@
     "publish": "esbuild index.ts --bundle  --platform=node --outfile=app.js && node app.js"
   },
   "dependencies": {
+    "@types/marked": "^3.0.0",
     "esbuild": "^0.8.44",
+    "highlight.js": "^11.2.0",
     "marked": "^3.0.2",
     "mkdirp": "^1.0.4"
   },
