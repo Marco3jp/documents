@@ -29,3 +29,24 @@
   <span>hoge</span>
 </div>
 ```
+
+```markdown
+- highlight
+- markdown
+```
+
+```typescript
+const message: string = "and programing languages XD";
+
+/**
+ * super ultra great godlike doc...
+ */
+console.log(message);
+```
+
+```shell
+$ git add :/md/sample/markdown.md
+$ git commit -m "add samples"
+[replace-showdown-to-marked unknown] add samples
+ 1 files changed, 21 insertions(+)
+```
