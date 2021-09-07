@@ -48,6 +48,15 @@ https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md に本体�
 - xf86-input-libinput: 1.1.0-1
 - libinput: 1.18.1-1
 
+### 調査に使ったコマンドとか
+- [xorg-xinput](https://archlinux.org/packages/extra/x86_64/xorg-xinput/)に含まれるxinput
+  - イベントが発火しているかの確認
+- /var/log/Xorg.0.log
+  - 下記するエラーログ
+  - ここから対応方法までたどり着けた
+- journalctl
+  - 当たり前ではあるけど一応、手がかりすら見つからなかった
+
 ## エラーログ
 
 ```
