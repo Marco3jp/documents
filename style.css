@@ -67,8 +67,19 @@ blockquote {
     padding: 16px;
 }
 
-code, pre {
+pre {
     font-family: monospace, monospace;
+}
+
+code {
+    font-family: Hack, monospace;
+}
+
+pre code {
+    overflow-x: auto;
+    display: block;
+    background: #2b2b2b;
+    padding: 1em;
 }
 
 table {
