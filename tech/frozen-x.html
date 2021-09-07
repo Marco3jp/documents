@@ -65,6 +65,22 @@
 <li>xf86-input-libinput: 1.1.0-1</li>
 <li>libinput: 1.18.1-1</li>
 </ul>
+<h3 id="調査に使ったコマンドとか">調査に使ったコマンドとか</h3>
+<ul>
+<li><a href="https://archlinux.org/packages/extra/x86_64/xorg-xinput/">xorg-xinput</a>に含まれるxinput<ul>
+<li>イベントが発火しているかの確認</li>
+</ul>
+</li>
+<li>/var/log/Xorg.0.log<ul>
+<li>下記するエラーログ</li>
+<li>ここから対応方法までたどり着けた</li>
+</ul>
+</li>
+<li>journalctl<ul>
+<li>当たり前ではあるけど一応、手がかりすら見つからなかった</li>
+</ul>
+</li>
+</ul>
 <h2 id="エラーログ">エラーログ</h2>
 <pre><code>[350768.163] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow
 [350789.534] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 27ms, your system is too slow
