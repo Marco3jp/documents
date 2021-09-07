@@ -17,6 +17,7 @@
     padding-bottom: 30px;
     font-family: -apple-system, Roboto, Arial, YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'MigMix 1P', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
     letter-spacing: 1px;
+    word-break: break-all;
 }
 
 .light {
