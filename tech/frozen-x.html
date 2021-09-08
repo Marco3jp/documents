@@ -10,11 +10,9 @@
 <body class="dark">
 <div id="wrapper">
     <h1 id="frozen-x">Frozen X</h1>
-<p>初回リリース: 2021-09-01
-<a href="https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md">https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md</a> に本体があるはずなので、履歴等はそちらから確認できる。</p>
+<p>初回リリース: 2021-09-01<br><a href="https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md">https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md</a> に本体があるはずなので、履歴等はそちらから確認できる。</p>
 <h2 id="はじめに">はじめに</h2>
-<p>これは私が遭遇した怪奇現象と、その解決に至るまでの道のりを示したものである。
-ただし確実に直ったことを証明したわけではないので、執筆後に再発した場合はまた長い道のりを歩む予定である。</p>
+<p>これは私が遭遇した怪奇現象と、その解決に至るまでの道のりを示したものである。<br>ただし確実に直ったことを証明したわけではないので、執筆後に再発した場合はまた長い道のりを歩む予定である。</p>
 <h2 id="怪奇現象の概要">怪奇現象の概要</h2>
 <ul>
 <li>ランダムなタイミングで操作ができなくなる<ul>
@@ -104,10 +102,8 @@
 <h2 id="対応">対応</h2>
 <p>このエラーから対応したことについてのまとめ。エラーには『scheduled expiry is in the past』と『event processing lagging』の2つがある。</p>
 <h3 id="scheduled-expiry-is-in-the-past">scheduled expiry is in the past</h3>
-<p>こっちは以下のRedditスレッドがかなり参考になりそう
-<a href="https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/">https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/</a></p>
-<p>チャタリング防止かわからんけどマウス側の機能？でタイマーが信頼できなくなることがあるようで、そこをどう扱うかという話。
-libinputのドキュメントにちゃんと設定の書き方とかがあったので、以下のリンクを読みつつ、最終的に下記のようなファイルを作った。</p>
+<p>こっちは以下のRedditスレッドがかなり参考になりそう<br><a href="https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/">https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/</a></p>
+<p>チャタリング防止かわからんけどマウス側の機能？でタイマーが信頼できなくなることがあるようで、そこをどう扱うかという話。<br>libinputのドキュメントにちゃんと設定の書き方とかがあったので、以下のリンクを読みつつ、最終的に下記のようなファイルを作った。</p>
 <p><a href="https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html">https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html</a></p>
 <p><code>/etc/libinput/local-overrides.quirks</code></p>
 <pre><code class="hljs language-ini"><span class="hljs-section">[Logitech G703 LS]</span>
@@ -122,16 +118,13 @@ libinputのドキュメントにちゃんと設定の書き方とかがあった
 [   180.844] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 11ms, your system is too slow
 [   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.
 </code></pre>
-<p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。
-他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
+<p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
 <h2 id="対応後に起こっている現象">対応後に起こっている現象</h2>
 <p>※以前まで起きていたかは不明なので、対応との関係性は断言できない</p>
 <h3 id="マウスがたまに動かなくなる">マウスがたまに動かなくなる</h3>
-<p>理由は不明だが、マウスがたまに動かなくなることがある。
-以前のランダムとは異なって、大体が放置した後に操作できなくなることが多い印象。</p>
+<p>理由は不明だが、マウスがたまに動かなくなることがある。<br>以前のランダムとは異なって、大体が放置した後に操作できなくなることが多い印象。</p>
 <h3 id="マウスを有線接続に変えると接続後の1秒くらいしか操作できない">マウスを有線接続に変えると接続後の1秒くらいしか操作できない</h3>
-<p>こちらも理由が不明だが、マウスを無線接続から有線接続切り替えると操作できなくなる。
-以下にログは置いておくが、無線で使えば対応できるのでそうしていて根本解決はしていない。（が、解決できるに越したことはない）</p>
+<p>こちらも理由が不明だが、マウスを無線接続から有線接続切り替えると操作できなくなる。<br>以下にログは置いておくが、無線で使えば対応できるのでそうしていて根本解決はしていない。（が、解決できるに越したことはない）</p>
 <h4 id="ログ">ログ</h4>
 <p>無線接続時</p>
 <pre><code>[704092.501] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/mouse0)
