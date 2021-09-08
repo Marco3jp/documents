@@ -7,4 +7,5 @@ export const markedConfig:MarkedOptions = {
         return hljs.highlight(code, { language }).value;
     },
     langPrefix: 'hljs language-',
+    breaks: true
 }
