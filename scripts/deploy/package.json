@@ -11,7 +11,7 @@
     "@types/marked": "^3.0.0",
     "esbuild": "^0.8.44",
     "highlight.js": "^11.2.0",
-    "marked": "^3.0.2",
+    "marked": "^4.0.10",
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
