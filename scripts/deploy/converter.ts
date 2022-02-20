@@ -2,8 +2,8 @@ import * as fs from "fs";
 import {config} from "../config";
 import {Article} from "./model/article";
 import {markedConfig} from "./marked.config";
+import {marked} from "marked";
 
-const marked = require('marked');
 const mkdirp = require('mkdirp');
 
 // TODO: Converterのくせになんでもかんでもやり過ぎなので流石に分割したい
