@@ -31,3 +31,30 @@
 - 作曲：須藤優(XIIX)
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0cv01P6YagCS2AzVJ7Zm53?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+## 2022-06-30
+
+### Kizuna AI『future base』
+- 作詞：Kizuna AI
+- 作曲・編曲：Yunomi
+- 朝起きて聴きたかったので聴いたやつ、音が良い
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6n6Kf8A4uKIpRNCm68yYBw?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+### しまじろうコメント②
+- これは曲ではない
+- 「一緒に音楽を聴いて踊ろう！」ってセリフが良い（？）
+- 出所がマジでSpotifyオリジナルっぽい（著作権表記がSpotifyってなってる）ので多分音源は入手不可な気がする、これ撮り下ろしたの……？？？
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0RGH3ioYmCwHv7eOYV6MwJ?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+## 2022-07-01
+- え！！！7月！？夏じゃん！？！？！？！多分？？！？！
+- この間ツイッターでフェスの話題で ~荒れて~ 盛り上がっていたのを見てフェスの違いを調べていたのですが、ロッキンのTT見てロックってなんだろうと部分的に思ったりしました
+- でも良い音楽が流れるのは良いですよね
+- ジャンルなんて好きな音楽を見つけるための一つのパーツでしかないので、これをきっかけにロック（広義）な音楽が見つかれば最高じゃん、という
+- それはそうと何故かSpotifyの音楽フェスプレイリストにロッキンがなくて、なにか関係性でも悪いんすか？？？みたいな気持ちにもなったりしました
+  - 多すぎてまとまらんやろというのはちょっと同意だけど
+
+### WIP
+- なにか書こうと思ったんだけどまあまだ23時間くらいあるし朝聴きたかったやつとか入れようかなと
