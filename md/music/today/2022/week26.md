@@ -56,5 +56,10 @@
 - それはそうと何故かSpotifyの音楽フェスプレイリストにロッキンがなくて、なにか関係性でも悪いんすか？？？みたいな気持ちにもなったりしました
   - 多すぎてまとまらんやろというのはちょっと同意だけど
 
-### WIP
-- なにか書こうと思ったんだけどまあまだ23時間くらいあるし朝聴きたかったやつとか入れようかなと
+### ラジオ体操第一・実演（提供：かんぽ生命）
+- 私がラジオ体操するときに見てるやつ
+- 実はラジオ体操ってかんぽ生命の前身である逓信省というところが作ったらしくて、NHKはあくまでそれを放送したという立ち位置らしいんですよね
+  - https://www.jp-life.japanpost.jp/radio/index.html
+- 異常な朝の時間にスタンプカード持って公園でラジオ体操したようなしていないような記憶が……と言おうとしたけど、正直大学でラジオ体操したり椅子とか壁に手をぶつけた記憶のほうが鮮明っていうのはあるんですよね🤔
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_YZZfaMGEOU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
