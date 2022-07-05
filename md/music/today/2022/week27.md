@@ -7,3 +7,12 @@
 - 以前知った曲なんだけどかっこいいので再掲的なやつ
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/79YUSGbl2b9E7TZFved5ZJ?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+## 2022-07-05
+
+### Lucky Kilimanjaro『350ml Galaxy』
+
+- 作詞：熊木幸丸
+- 作曲：Lucky Kilimanjaro
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6mMpeDOLZGhF6p82pRFgOZ?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
