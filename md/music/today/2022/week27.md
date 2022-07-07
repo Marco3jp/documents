@@ -32,3 +32,12 @@
 - 編曲：堀江晶太
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1hWAQK2Mrs9cpvfOq00j4K?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+## 2022-07-08
+
+### 七瀬佳乃(CV:青山吉能)『ステラ・ドライブ』
+
+- 作詞：只野菜摘
+- 作曲：田中秀和(MONACA)
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6jWYtXE4WDbESbvXCKLJDT?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
