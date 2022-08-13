@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>League of Linux Marco出張所</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+</head>
+<body class="dark">
+<div id="wrapper">
+    <h1 id="league-of-linux-marco出張所">League of Linux Marco出張所</h1>
+<p><strong>いまのところ成功しておりません！！！</strong></p>
+<h2 id="これはなに？">これはなに？</h2>
+<ul>
+<li>League of Legends という <del>異常</del> ゲームはプレイヤーが <del>おかしなほどに</del> 多すぎるのでLinuxでプレイしたいという人も一定数いる</li>
+<li>そのためRedditを中心にLinuxプレイヤーコミュニティーがひっそりと存在し、公式からも認知されている<ul>
+<li>認知されているだけでサポートはされていない</li>
+<li>もちろんチートのためのプレイは環境に関係なく禁止されているが、Linuxにおいても通常プレイをする分には特にBANするルールがあるわけではないっぽい</li>
+<li>とはいえ不安定でAFKを繰り返してしまうとかはWindowsであっても同じくBANされておかしくないので、『通常プレイできる環境を作れる』というのが大前提</li>
+</ul>
+</li>
+<li>環境依存も多々あるし基本的に英語ばかりなので、せっかくだし自分がやったことをまとめていくか〜という記事です</li>
+<li>原稿は <a href="https://github.com/Marco3jp/documents/blob/master/md/league-of-linux.md">https://github.com/Marco3jp/documents/blob/master/md/league-of-linux.md</a> に置かれています（過去の原稿はHistoryをたどってください）</li>
+</ul>
+<h2 id="linuxネイティブでのトライ">Linuxネイティブでのトライ</h2>
+<h3 id="環境">環境</h3>
+<h4 id="ハードウェア">ハードウェア</h4>
+<ul>
+<li>PC<ul>
+<li>CPU: AMD Ryzen 5 PRO 4650G</li>
+<li>GPU: Radeon Graphics (CPU Onboard Graphics)</li>
+</ul>
+</li>
+<li>マルチモニタ<ul>
+<li>4k</li>
+<li>2k 144hz</li>
+</ul>
+</li>
+</ul>
+<h4 id="ソフトウェア">ソフトウェア</h4>
+<ul>
+<li>Arch Linux<ul>
+<li>GUI: x + xfce</li>
+<li>Driver: xf86-video-amdgpu</li>
+<li>OpenGL: mesa + lib32-mesa</li>
+</ul>
+</li>
+<li>Lutris</li>
+</ul>
+<h4 id="ほか">ほか</h4>
+<ul>
+<li>LoLは日本サーバーでプレイしている</li>
+</ul>
+<h3 id="流れ">流れ</h3>
+<p>基本的には <a href="https://www.reddit.com/r/leagueoflinux/wiki/index/#wiki_1_-_.25B6.FE0F_how_to_install_league_of_legends">League of LinuxのWiki</a> を参考にしている</p>
+<ol>
+<li><a href="https://github.com/lutris/docs/blob/master/WineDependencies.md#archendeavourosmanjaroother-arch-derivatives">Wineの依存関係など</a>をインストール</li>
+<li><a href="https://lutris.net/games/league-of-legends/">LutrisのLoLのページ</a>からインストールスクリプトを走らせる</li>
+</ol>
+<ul>
+<li><strong>注意：ログインはしないこと</strong></li>
+<li>インストーラが起動するのでダウンロードボタンを押してダウンロードする</li>
+<li>その後ネイティブクライアントが起動して更にデータのダウンロードが行われる</li>
+<li>ダウンロードが終わったあと、 <strong>ログインぜずにクライアントを閉じる</strong></li>
+<li>閉じたのをフックしてスクリプトがまた走るっぽい</li>
+</ul>
+<ol start="3">
+<li>いい感じに調整を加える (<a href="https://www.reddit.com/r/leagueoflinux/wiki/index/#wiki_1c_-_post-install">https://www.reddit.com/r/leagueoflinux/wiki/index/#wiki_1c_-_post-install</a> を参考にした)</li>
+<li>起動しない orz</li>
+</ol>
+<h3 id="試行錯誤">試行錯誤</h3>
+<h4 id="起動しない様子">起動しない様子</h4>
+<ul>
+<li>ゲーム前のクライアントは起動する</li>
+<li>チャンプのピックもできる</li>
+<li>インゲームクライアントのロードが固まって落ちやすい<ul>
+<li>これは再現性が高めだけど絶対ではないかも</li>
+</ul>
+</li>
+<li>インゲームクライアントのロードが終わると数フレームで操作できなくなる</li>
+</ul>
+<h4 id="調べた感じ">調べた感じ</h4>
+<ul>
+<li>日本サーバーや韓国サーバー（マルチバイトサーバー？）において同様の現象が発生するらしい<ul>
+<li><a href="https://www.reddit.com/r/leagueoflinux/comments/wg3qe2/cannot_enter_game_on_japanese_server_but_normal/">https://www.reddit.com/r/leagueoflinux/comments/wg3qe2/cannot_enter_game_on_japanese_server_but_normal/</a></li>
+<li><a href="https://www.reddit.com/r/leagueoflinux/comments/w9nz5s/comment/ii3ppc4/?utm_source=reddit&amp;utm_medium=web2x&amp;context=3">https://www.reddit.com/r/leagueoflinux/comments/w9nz5s/comment/ii3ppc4/?utm_source=reddit&amp;utm_medium=web2x&amp;context=3</a></li>
+</ul>
+</li>
+<li>言語の問題？とのことではあるが、インゲームクライアントの言語をどうにか英語にしてみても変わらず<ul>
+<li><a href="https://www.reddit.com/r/leagueoflinux/comments/rg4sz4/any_way_to_change_the_clientingame_language_using/">https://www.reddit.com/r/leagueoflinux/comments/rg4sz4/any_way_to_change_the_clientingame_language_using/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="仮想環境でのトライ">仮想環境でのトライ</h2>
+<h3 id="ソフトウェア-1">ソフトウェア</h3>
+<ul>
+<li>↑に書いた Arch Linux</li>
+<li>Virtualbox<ul>
+<li>Windows 10</li>
+</ul>
+</li>
+</ul>
+<h3 id="流れ-1">流れ</h3>
+<ul>
+<li>インストールも起動もできたけど、ゲームに入るところでクリティカルなエラーが起きたよ〜って落ちる</li>
+<li>VMの判定かなぁと思って <a href="https://github.com/hfiref0x/VBoxHardenedLoader">https://github.com/hfiref0x/VBoxHardenedLoader</a> とか参考にしようとしたけどうまくいかず塩漬け</li>
+</ul>
+
+    <script src="theme.js"></script>
+</div>
+</body>
+</html>
