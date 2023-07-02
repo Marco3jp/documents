@@ -3,8 +3,11 @@ import {config} from "../config";
 import {Article} from "./model/article";
 import {markedConfig} from "./marked.config";
 import {marked} from "marked";
-
-const mkdirp = require('mkdirp');
+import {markedHighlight} from "marked-highlight";
+import { gfmHeadingId } from "marked-gfm-heading-id";
+import { mangle } from "marked-mangle";
+import hljs from 'highlight.js';
+import {mkdirp} from 'mkdirp';
 
 // TODO: Converterのくせになんでもかんでもやり過ぎなので流石に分割したい
 export class Converter {
@@ -16,6 +19,16 @@ export class Converter {
         this.projectRoot = projectRoot;
         this.outDir = outDir;
         this.articleList = [];
+
+        marked.use(markedHighlight({
+            langPrefix: 'hljs language-',
+            highlight(code, lang) {
+                const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                return hljs.highlight(code, { language }).value;
+            }
+        }));
+        marked.use(gfmHeadingId())
+        marked.use(mangle())
     }
 
     processFiles(relativePath: string) {
@@ -46,6 +59,7 @@ export class Converter {
 
                 this.exportList("." + exportDirPath + "/", convertedFileName, title ?? convertedFileName);
             } else {
+                // FIXME: たぶんこれプロジェクトにmd, html以外のファイルが来たら壊れそう
                 this.processFiles(relativePath + "/" + fileName);
             }
         });

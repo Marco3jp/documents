@@ -1,8 +1,8 @@
 import * as fs from "fs";
+import {mkdirp} from 'mkdirp';
+
 import {Converter} from "./converter";
 import {config} from "../config";
-
-const mkdirp = require('mkdirp')
 
 const splitDir = __dirname.split("/");
 

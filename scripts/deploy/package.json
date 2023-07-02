@@ -4,15 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild index.ts --bundle  --platform=node --outfile=app.js",
-    "publish": "esbuild index.ts --bundle  --platform=node --outfile=app.js && node app.js"
+    "build": "esbuild index.ts --bundle --platform=node --outfile=app.js",
+    "publish": "esbuild index.ts --bundle --platform=node --outfile=app.js && node app.js"
   },
   "dependencies": {
-    "@types/marked": "4.0.2",
-    "esbuild": "0.14.23",
-    "highlight.js": "11.4.0",
-    "marked": "4.0.12",
-    "mkdirp": "1.0.4"
+    "@types/marked": "5.0.0",
+    "esbuild": "0.18.11",
+    "highlight.js": "11.8.0",
+    "marked": "5.1.0",
+    "marked-gfm-heading-id": "3.0.4",
+    "marked-highlight": "2.0.1",
+    "marked-mangle": "1.1.0",
+    "mkdirp": "3.0.1"
   },
   "devDependencies": {
     "@types/node": "18.0.6"
