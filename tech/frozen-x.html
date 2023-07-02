@@ -98,8 +98,7 @@
 [351428.929] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-23ms), your system is too slow
 [351431.072] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-6ms), your system is too slow
 [351432.076] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-3ms), your system is too slow
-</code></pre>
-<h2 id="対応">対応</h2>
+</code></pre><h2 id="対応">対応</h2>
 <p>このエラーから対応したことについてのまとめ。エラーには『scheduled expiry is in the past』と『event processing lagging』の2つがある。</p>
 <h3 id="scheduled-expiry-is-in-the-past">scheduled expiry is in the past</h3>
 <p>こっちは以下のRedditスレッドがかなり参考になりそう<br><a href="https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/">https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/</a></p>
@@ -109,16 +108,14 @@
 <pre><code class="hljs language-ini"><span class="hljs-section">[Logitech G703 LS]</span>
 <span class="hljs-attr">MatchName</span>=Logitech G703 LS
 <span class="hljs-attr">ModelBouncingKeys</span>=<span class="hljs-number">1</span>
-</code></pre>
-<h3 id="event-processing-lagging">event processing lagging</h3>
+</code></pre><h3 id="event-processing-lagging">event processing lagging</h3>
 <p>上記対応後も以下のように出続ける</p>
 <pre><code>[   124.525] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 13ms, your system is too slow
 [   130.094] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 32ms, your system is too slow
 [   130.761] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 36ms, your system is too slow
 [   180.844] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 11ms, your system is too slow
 [   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.
-</code></pre>
-<p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
+</code></pre><p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
 <h2 id="対応後に起こっている現象">対応後に起こっている現象</h2>
 <p>※以前まで起きていたかは不明なので、対応との関係性は断言できない</p>
 <h3 id="マウスがたまに動かなくなる">マウスがたまに動かなくなる</h3>
@@ -178,8 +175,7 @@
 [704092.738] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse
 [704092.739] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer
 [704092.768] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed
-</code></pre>
-<p>無線接続すると以下</p>
+</code></pre><p>無線接続すると以下</p>
 <pre><code>[704205.713] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/mouse0)
 [704205.713] (**) Logitech G703 LS: Applying InputClass &quot;system-keyboard&quot;
 [704205.713] (II) No input driver specified, ignoring this device.
@@ -218,8 +214,7 @@
 [704205.757] (II) XINPUT: Adding extended input device &quot;Logitech G703 LS&quot; (type: KEYBOARD, id 14)
 [704205.757] (**) Option &quot;xkb_model&quot; &quot;jp106&quot;
 [704205.757] (**) Option &quot;xkb_layout&quot; &quot;jp&quot;
-</code></pre>
-<p>差分で見ると以下（デバイス名、イベント名、行頭などを調整しているので、Rawじゃないとだめというなら各自で↑のやつ使ってください）</p>
+</code></pre><p>差分で見ると以下（デバイス名、イベント名、行頭などを調整しているので、Rawじゃないとだめというなら各自で↑のやつ使ってください）</p>
 <pre><code class="hljs language-diff">config/udev: Adding input device DEVICE_NAME (/dev/input/mouse0)
 <span class="hljs-deletion">-DEVICE_NAME: Applying InputClass &quot;system-keyboard&quot;</span>
 No input driver specified, ignoring this device.
@@ -287,7 +282,6 @@ Option &quot;xkb_layout&quot; &quot;jp&quot;
 <span class="hljs-addition">+EVENT_A - DEVICE_NAME: device is a pointer</span>
 <span class="hljs-addition">+EVENT_A - DEVICE_NAME: device removed</span>
 </code></pre>
-
     <script src="../theme.js"></script>
 </div>
 </body>
