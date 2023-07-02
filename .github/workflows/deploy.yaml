@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: enable corepack and update yarn
-        run: corepack enable && corepack prepare yarn@<v3.6.1> --activate
+        run: corepack enable && corepack prepare yarn@v3.6.1 --activate
 
       - name: Install dependencies
         run: cd scripts/deploy && yarn --frozen-lockfile
