@@ -32,7 +32,7 @@ export default function Page({ params }: { params: { paths: string[] } }) {
 
     const {paths} = params
 
-    // ファイルのあるディレクトリ名
+    // ファイルのあるディレクトリの名前
     const dirName = paths.length > 1 ? process.cwd() + '/../' + config.markdown_dir + '/' + paths.slice(0, paths.length - 1).join('/') : process.cwd() + '/../' + config.markdown_dir
 
     // ファイル名
