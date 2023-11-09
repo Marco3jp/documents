@@ -25,3 +25,106 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@media (max-width: 768px) {
+  #wrapper {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    min-width: 692px;
+    width: 75vw;
+  }
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 30px;
+  font-family: -apple-system, Roboto, Arial, YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'MigMix 1P', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  letter-spacing: 1px;
+  word-break: break-all;
+}
+
+.light {
+  background: #FAFAFA;
+  color: #212121;
+}
+
+.dark {
+  background: #212121;
+  color: #FAFAFA;
+}
+
+h1 {
+  font-size: 2rem;
+  border-bottom: 3px double;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px dotted;
+}
+
+h3 {
+  font-size: 1.17rem;
+  border-bottom: 1px dashed;
+}
+
+h4 {
+  font-size: 1.00rem;
+}
+
+h5 {
+  font-size: 0.83rem;
+}
+
+h6 {
+  font-size: 0.67rem;
+}
+
+hr {
+  margin: 15px 75px;
+  border: unset;
+  border-top: dashed 1px;
+}
+
+blockquote {
+  border: dashed 1px;
+  padding: 16px;
+}
+
+pre {
+  font-family: monospace, monospace;
+}
+
+code {
+  font-family: Hack, monospace;
+}
+
+pre code {
+  overflow-x: auto;
+  display: block;
+  background: #2b2b2b;
+  padding: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px currentColor solid;
+  padding: 12px 18px;
+  margin: 0;
+}
+
+.dark a {
+  color: #2196F3;
+}
+
+.dark a:visited {
+  color: #00BCD4;
+}
