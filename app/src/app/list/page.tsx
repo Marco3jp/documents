@@ -17,8 +17,12 @@ export default function Page() {
 
         const file = fs.readFileSync(dirName + '/' + fileName, 'utf-8')
 
-        const regexResult = /^(# (?<md_title>.*))|(<h1.*>(?<html_title>.*)<\/h1>)$/.exec(file)
-        const title = regexResult?.groups?.md_title ? regexResult?.groups?.md_title : regexResult?.groups?.html_title ? regexResult?.groups?.html_title : "no title";
+        const regexResult = /(^# (?<md_title>.*))|(<h1.*>(?<html_title>.*)<\/h1>)/.exec(file)
+        const title = regexResult?.groups?.md_title
+            ? regexResult?.groups?.md_title
+            : (regexResult?.groups?.html_title
+                ? regexResult?.groups?.html_title
+                : "no title");
 
         return {
             href,
