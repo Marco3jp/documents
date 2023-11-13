@@ -29,6 +29,16 @@ export async function getStaticPaths(): Promise<{paths: {params: {paths: string[
 }
 
 export async function getStaticProps({ params }: { params: { paths: string[] } }) {
+    marked.use(markedHighlight({
+        langPrefix: 'hljs language-',
+        highlight(code: string, lang: string) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(code, { language }).value;
+        }
+    }));
+    marked.use(gfmHeadingId())
+    marked.use(mangle())
+
     const {paths} = params
 
     // ファイルのあるディレクトリの名前
@@ -42,12 +52,13 @@ export async function getStaticProps({ params }: { params: { paths: string[] } }
 
     return {
         props: {
-            sourceCode
+            sourceCode,
+            requiredHighlightCSS: sourceCode.includes("hljs language-")
         }
     }
 }
 
-export default function Paths({sourceCode}: { sourceCode: string | null}) {
+export default function Paths({sourceCode, requiredHighlightCSS}: { sourceCode: string | null, requiredHighlightCSS: boolean}) {
     const router = useRouter()
     const {paths: rawPaths} = router.query
 
@@ -55,17 +66,14 @@ export default function Paths({sourceCode}: { sourceCode: string | null}) {
         return <Error statusCode={500}></Error>
     }
 
-    marked.use(markedHighlight({
-        langPrefix: 'hljs language-',
-        highlight(code: string, lang: string) {
-            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-            return hljs.highlight(code, { language }).value;
-        }
-    }));
-    marked.use(gfmHeadingId())
-    marked.use(mangle())
-
     return (
-        <main id="wrapper" dangerouslySetInnerHTML={{__html: sourceCode}}></main>
+        <>
+            {
+                // 必要なページでのみ読み込みたいが、DynamicImportはStaticExportにおいて使えないためlinkタグを埋め込む形にしている
+                // eslint-disable-next-line @next/next/no-css-tags
+                requiredHighlightCSS && <link rel="stylesheet" href="/highlight.css" />
+            }
+            <main id="wrapper" dangerouslySetInnerHTML={{__html: sourceCode}}></main>
+        </>
     )
 }
