@@ -1,19 +1,18 @@
-import {config} from "../../../model/config";
+import {config} from "../../model/config";
 import {getFilePathLists} from "@/lib/fs";
 import * as fs from "fs";
 
-export default function Page() {
+export async function getStaticProps() {
     const articleDir = process.cwd() + '/../' + config.markdown_dir
     const pathLists = getFilePathLists(articleDir, articleDir)
     const pages = pathLists.map(pathList => {
         const href = "../" + pathList.join('/')
 
-
         // ファイルのあるディレクトリの名前
         const dirName = pathList.length > 1 ? process.cwd() + '/../' + config.markdown_dir + '/' + pathList.slice(0, pathList.length - 1).join('/') : process.cwd() + '/../' + config.markdown_dir
 
         // ファイル名
-        const fileName = fs.existsSync(dirName + '/' + `${pathList[pathList.length-1]}.md`) ? `${pathList[pathList.length-1]}.md` : `${pathList[pathList.length-1]}.html`
+        const fileName = fs.existsSync(dirName + '/' + `${pathList[pathList.length - 1]}.md`) ? `${pathList[pathList.length - 1]}.md` : `${pathList[pathList.length - 1]}.html`
 
         const file = fs.readFileSync(dirName + '/' + fileName, 'utf-8')
 
@@ -26,6 +25,14 @@ export default function Page() {
         }
     })
 
+    return {
+        props: {
+            pages
+        }
+    }
+}
+
+export default function List({pages}: {pages: {href: string, title: string}[]}) {
     const liElements = pages.map(page => {
         return (
             <li key={page.href}><a href={page.href}>{page.title}</a></li>
