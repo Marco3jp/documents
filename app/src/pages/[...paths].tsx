@@ -14,7 +14,7 @@ export async function getStaticPaths(): Promise<{paths: {params: {paths: string[
     const articleDir = process.cwd() + '/../' + config.markdown_dir
     const pathLists = getFilePathLists(articleDir, articleDir)
 
-    const routingByPath: { params: {paths: string[]} }[] = pathLists.map(pathList => {
+    const routingByPath: { params: {paths: string[]} }[] = pathLists.filter(pathList => pathList.some(path => /sample/.test(path))).map(pathList => {
         return {
             params: {
                 paths: pathList
@@ -29,9 +29,12 @@ export async function getStaticPaths(): Promise<{paths: {params: {paths: string[
 }
 
 export async function getStaticProps({ params }: { params: { paths: string[] } }) {
+    let count = 0;
+
     marked.use(markedHighlight({
         langPrefix: 'hljs language-',
         highlight(code: string, lang: string) {
+            count++;
             const language = hljs.getLanguage(lang) ? lang : 'plaintext';
             return hljs.highlight(code, { language }).value;
         }
@@ -48,8 +51,10 @@ export async function getStaticProps({ params }: { params: { paths: string[] } }
     const fileName = fs.existsSync(dirName + '/' + `${paths[paths.length-1]}.md`) ? `${paths[paths.length-1]}.md` : `${paths[paths.length-1]}.html`
 
     const file = fs.readFileSync(dirName + '/' + fileName, 'utf-8')
-    const sourceCode = fileName.includes(".md") ? marked(file, markedConfig) : file;
+    const sourceCode = fileName.includes(".md") ? marked.parse(file, markedConfig) : file;
 
+
+    console.log("file name:", fileName,"running count: ", count)
     return {
         props: {
             sourceCode,
