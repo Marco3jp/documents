@@ -1,0 +1,19 @@
+---
+import ThemeToggler from "../components/ThemeToggler.astro";
+import GlobalStyle from "../components/GlobalStyle.astro";
+const { title } = Astro.props
+---
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>documents</title>
+    <GlobalStyle />
+</head>
+<body class="dark">
+<main id="wrapper">
+    <slot />
+    <ThemeToggler />
+</main>
+</body>
+</html>
