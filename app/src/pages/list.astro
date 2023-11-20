@@ -30,11 +30,11 @@ const pages = pathLists.map(pathList => {
 })
 ---
 <DefaultLayout>
-    <main id="wrapper">
+    <article>
         <h1>記事一覧</h1>
         <ul>
             {pages.map(page =>
                     <li><a href={page.href}>{page.title}</a></li>)}
         </ul>
-    </main>
+    </article>
 </DefaultLayout>
