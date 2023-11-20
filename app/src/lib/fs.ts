@@ -1,6 +1,5 @@
 // 引数で渡されたディレクトリパスから再帰的に走査する
 // basePathが /dir1/dir2 だったとして、ファイルが /dir1/dir2/dir3/file.html だった場合、['dir3', 'file']として示される
-// これをすべてのファイルに対して行い、
 import * as fs from "fs";
 
 export function getFilePathLists(targetPath: string, basePath: string): string[][] {
