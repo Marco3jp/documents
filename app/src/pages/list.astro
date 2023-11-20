@@ -6,8 +6,6 @@ import DefaultLayout from "../layout/default.astro";
 const articleDir = process.cwd() + '/../' + config.markdown_dir
 const pathLists = getFilePathLists(articleDir, articleDir)
 const pages = pathLists.map(pathList => {
-    const href = "../" + pathList.join('/') + ".html"
-
 // ファイルのあるディレクトリの名前
     const dirName = pathList.length > 1 ? process.cwd() + '/../' + config.markdown_dir + '/' + pathList.slice(0, pathList.length - 1).join('/') : process.cwd() + '/../' + config.markdown_dir
 
@@ -23,6 +21,8 @@ const pages = pathLists.map(pathList => {
             ? regexResult?.groups?.html_title
             : "no title");
 
+    const href = "./" + pathList.join('/') + ".html"
+
     return {
         href,
         title
@@ -34,7 +34,7 @@ const pages = pathLists.map(pathList => {
         <h1>記事一覧</h1>
         <ul>
             {pages.map(page =>
-                    <li><a href={page.href}>{page.title}</a></li>)}
+                    <li><a href={page.href} target="_self">{page.title}</a></li>)}
         </ul>
     </article>
 </DefaultLayout>
