@@ -5,27 +5,14 @@
     @tailwind components;
     @tailwind utilities;
 
-    :root {
-        --foreground-rgb: 0, 0, 0;
-        --background-start-rgb: 214, 219, 220;
-        --background-end-rgb: 255, 255, 255;
+    .light {
+        background: #FAFAFA;
+        color: #212121;
     }
 
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --foreground-rgb: 255, 255, 255;
-            --background-start-rgb: 0, 0, 0;
-            --background-end-rgb: 0, 0, 0;
-        }
-    }
-
-    body {
-        color: rgb(var(--foreground-rgb));
-        background: linear-gradient(
-                to bottom,
-                transparent,
-                rgb(var(--background-end-rgb))
-        ) rgb(var(--background-start-rgb));
+    .dark {
+        background: #212121;
+        color: #FAFAFA;
     }
 
     @media (max-width: 768px) {
@@ -48,16 +35,6 @@
         font-family: -apple-system, Roboto, Arial, YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'MigMix 1P', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
         letter-spacing: 1px;
         word-break: break-all;
-    }
-
-    .light {
-        background: #FAFAFA;
-        color: #212121;
-    }
-
-    .dark {
-        background: #212121;
-        color: #FAFAFA;
     }
 
     h1, h2, h3, h4, h5, h6 {
