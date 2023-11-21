@@ -1,16 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import {markedConfig} from "../../marked.config";
-import {Marked} from "marked";
-import {mangle} from "marked-mangle";
-import {gfmHeadingId} from "marked-gfm-heading-id";
-import hljs from 'highlight.js';
-import {markedHighlight} from 'marked-highlight';
 import DefaultLayout from "../layout/default.astro";
-import {CollectionEntry} from "astro:content";
+import {getEntry, CollectionEntry} from "astro:content";
 
-interface Props {
-    entry: CollectionEntry<string>
+interface Frontmatter {
+    cushionMessage?: string
 }
 
 export async function getStaticPaths(): Promise<{params: { paths: string }, props: { entry: CollectionEntry<string> }}[]> {
@@ -21,39 +15,56 @@ export async function getStaticPaths(): Promise<{params: { paths: string }, prop
             params: {
                 paths: entry.slug,
             },
-            props: {
-                entry
-            }
         }
     })
 }
 
-const marked = new Marked()
+const post = await getEntry("articles", Astro.params.paths);
 
-marked.use(markedHighlight({
-    langPrefix: 'hljs language-',
-    highlight(code: string, lang: string) {
-        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-        return hljs.highlight(code, { language }).value;
-    }
-}));
-marked.use(gfmHeadingId())
-marked.use(mangle())
-
-const {entry} = Astro.props
-
-const sourceCode = entry.id.includes(".md") ? (
-    await marked.parse(entry.body, {async: true, ...markedConfig})
-) : entry.body;
-
-// エラーハンドリングの実装
+const {Content} = await post.render()
 
 ---
 
-<DefaultLayout>
-    <article set:html={sourceCode}></article>
-    {
-        sourceCode.includes("language-") ? <link rel="stylesheet" href="./highlight.css" /> : ""
 
+<style is:global>
+    .light .sushion-message{
+        background: #FAFAFA;
+        color: #212121;
     }
+
+    .dark .sushion-message{
+        background: #212121;
+        color: #FAFAFA;
+    }
+</style>
+<DefaultLayout>
+    {
+        post?.data?.cushionMessage ?
+            <div class="sushion-message absolute flex top-0 left-0 w-full h-full justify-center items-center">
+                <div class="flex flex-col max-w-[80%]">
+                    {post?.data?.cushionMessage}
+                    <div class="flex flex-col mt-8">
+                        <button id="go-adventure" class="border rounded py-4 px-2">OK, Go the adventure</button>
+                        <button id="go-yahoo-kids" class="border rounded py-4 px-2 mt-8">Return Yahoo!JP Kids</button>
+                    </div>
+                </div>
+            </div> : ""
+    }
+
+    <Content />
 </DefaultLayout>
+
+<script lang="ts">
+    const cushionMessage = document.querySelector(".sushion-message")
+
+    const adventureButton = document.querySelector("#go-adventure")
+    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+
+    adventureButton.addEventListener("click", () => {
+        cushionMessage.classList.add("hidden")
+    })
+
+    yahooKidsButton.addEventListener("click", () => {
+        window.location.href = "https://kids.yahoo.co.jp/"
+    })
+</script>
