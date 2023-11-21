@@ -1,7 +1,5 @@
 ---
-import {config} from "../../model/config";
-import {getFilePathLists} from "../lib/fs";
-import * as fs from "fs";
+import { getCollection } from 'astro:content';
 import {markedConfig} from "../../marked.config";
 import {Marked} from "marked";
 import {mangle} from "marked-mangle";
@@ -9,16 +7,22 @@ import {gfmHeadingId} from "marked-gfm-heading-id";
 import hljs from 'highlight.js';
 import {markedHighlight} from 'marked-highlight';
 import DefaultLayout from "../layout/default.astro";
+import {CollectionEntry} from "astro:content";
 
-export async function getStaticPaths(): Promise<{ params: { paths: string } }[]> {
-    const articleDir = process.cwd() + '/../' + config.markdown_dir
-    const pathLists = getFilePathLists(articleDir, articleDir)
+interface Props {
+    entry: CollectionEntry<string>
+}
 
-    // .filter(pathList => pathList.some(path => /sample/.test(path))).
-    return pathLists.map(pathList => {
+export async function getStaticPaths(): Promise<{params: { paths: string }, props: { entry: CollectionEntry<string> }}[]> {
+    const pathLists = await getCollection("articles")
+
+    return pathLists.map(entry => {
         return {
             params: {
-                paths: pathList.join("/")
+                paths: entry.slug,
+            },
+            props: {
+                entry
             }
         }
     })
@@ -36,18 +40,11 @@ marked.use(markedHighlight({
 marked.use(gfmHeadingId())
 marked.use(mangle())
 
-const paths = Astro.params.paths.split("/");
+const {entry} = Astro.props
 
-// ファイルのあるディレクトリの名前
-const dirName = paths.length > 1 ? process.cwd() + '/../' + config.markdown_dir + '/' + paths.slice(0, paths.length - 1).join('/') : process.cwd() + '/../' + config.markdown_dir
-
-// ファイル名
-const fileName = fs.existsSync(dirName + '/' + `${paths[paths.length-1]}.md`) ? `${paths[paths.length-1]}.md` : `${paths[paths.length-1]}.html`
-
-const file = fs.readFileSync(dirName + '/' + fileName, 'utf-8')
-const sourceCode = fileName.includes(".md") ? (
-    await marked.parse(file, {async: true, ...markedConfig})
-) : file;
+const sourceCode = entry.id.includes(".md") ? (
+    await marked.parse(entry.body, {async: true, ...markedConfig})
+) : entry.body;
 
 // エラーハンドリングの実装
 
