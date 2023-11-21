@@ -4,3 +4,4 @@ node_modules
 scripts/deploy/app.js
 tmp
 .idea
+.astro
