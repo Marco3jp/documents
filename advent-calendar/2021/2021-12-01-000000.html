@@ -1,21 +1,30 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.ab712936.css" /><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper">  <article><h1 id="marco3jp-advent-calendar-2021-一日目">Marco3jp Advent Calendar 2021 一日目</h1>
-<p>さあ昨年は断念してしまったアドベントカレンダー、2021年はどうなるんでしょう！<br>今年のアドベントカレンダーでは、昨年からダラダラ作っているシステムのリファクタリングと機能の追加をしたいな～ってことで、そのことについてまず書いていきますね。</p>
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.8a769db9.css" />
+<style>.light .sushion-message{background:#FAFAFA;color:#212121}.dark .sushion-message{background:#212121;color:#fafafa}
+</style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
+</script></head> <body class="dark"> <main id="wrapper"> <h1 id="marco3jp-advent-calendar-2021-一日目">Marco3jp Advent Calendar 2021 一日目</h1>
+<p>さあ昨年は断念してしまったアドベントカレンダー、2021年はどうなるんでしょう！<br>
+今年のアドベントカレンダーでは、昨年からダラダラ作っているシステムのリファクタリングと機能の追加をしたいな～ってことで、そのことについてまず書いていきますね。</p>
 <hr>
-<p>色々と理由があって以前使っていたはてなブログから自前のシステムに移行していて、新規記事については自前のシステムで提供されます（リダイレクトがあるとか、同じ場所で裏が変わっているとかではなくて、根本的に別のシステム）。<br>Documentsという名前（？）のリポジトリ内にあるデプロイスクリプトがマークダウンファイルを変換してGitHubPagesに投げるというシンプルな構成です。<br>現在は記事と一覧のみ、メタデータ管理なしでただ変換するだけの仕組みですが、このイベントをきっかけにメタデータ管理からタグリストとか作れるようになりたいというのがゴールになっています。</p>
+<p>色々と理由があって以前使っていたはてなブログから自前のシステムに移行していて、新規記事については自前のシステムで提供されます（リダイレクトがあるとか、同じ場所で裏が変わっているとかではなくて、根本的に別のシステム）。<br>
+Documentsという名前（？）のリポジトリ内にあるデプロイスクリプトがマークダウンファイルを変換してGitHubPagesに投げるというシンプルな構成です。<br>
+現在は記事と一覧のみ、メタデータ管理なしでただ変換するだけの仕組みですが、このイベントをきっかけにメタデータ管理からタグリストとか作れるようになりたいというのがゴールになっています。</p>
 <p>んでなんで自前で組みたいかというと、</p>
 <ul>
-<li>長期的に管理する自分による自分のためのシステムを作ってみたい<ul>
-<li>長期的に管理する場所として文書の置き場所というのは良さそう<ul>
+<li>長期的に管理する自分による自分のためのシステムを作ってみたい
+<ul>
+<li>長期的に管理する場所として文書の置き場所というのは良さそう
+<ul>
 <li>でもメンテ <strong>しなければならない</strong> ではないんだよな〜とは思う</li>
 <li>しなきゃいけないこと、したくないですよね……（モノを作るのはしなきゃいけないことじゃないから良い）（？？？）</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>思想を込めたサービスを作りたい<ul>
+<li>思想を込めたサービスを作りたい
+<ul>
 <li>自分の表現を自分で完全にコントロールできるようになりたかった</li>
-<li>原稿へのアクセス可能な環境<ul>
+<li>原稿へのアクセス可能な環境
+<ul>
 <li>HTML原理主義と似たように原稿を重要だと思っているので、その思想自体も表現したいと思った</li>
 </ul>
 </li>
@@ -23,9 +32,14 @@
 </ul>
 </li>
 </ul>
-<p>あとはCI/CDをちゃんと使ってみるとか、何かの仕組み（Nuxtみたいなフレームワークとか）に乗っからずにちゃんとコードを0から書くとか、いろいろなスキルアップを含めてよさそうだな～っていうのもあります。<br>以前まではエディタ作るか～みたいなことを考えてましたが、GitHubのエディタでも十分かも？みたいなことを使いながら気がついたりもあって、ユーザーであって作者でもある、ということを存分に発揮して軌道修正とかしていけるのも楽しいですね。</p>
-<p>そんなこんなで書いたコードなので初期の実装意味不明すぎることもあり、ちゃんと設計したほうがいいんじゃない、っていうことも一応考えてはいる。<br>でも設計が得意ではないので、とにかくいろいろ考えてリファクタリングしてみよう～っていうのもこの機能改修に含めてみるつもり。<br>まずはシステムの中身を考えてみた感じCDなので手続き型みたいなものでも良さそうかなと思っていて、ざっくり抽出、変換、出力（保存）みたいな3ステップにすれば良かったりしないかなあって雑に描いているところ。<br>多分UIも若干変わると思うので、どこかでこのアドベントカレンダーの見た目が変わったら進んだんかな？と思ってもらえるようにしたい。</p>
-<p>そんなこんなで一日目予定の記事を書いてみました。<br>じゃあまた、明日。</p>
+<p>あとはCI/CDをちゃんと使ってみるとか、何かの仕組み（Nuxtみたいなフレームワークとか）に乗っからずにちゃんとコードを0から書くとか、いろいろなスキルアップを含めてよさそうだな～っていうのもあります。<br>
+以前まではエディタ作るか～みたいなことを考えてましたが、GitHubのエディタでも十分かも？みたいなことを使いながら気がついたりもあって、ユーザーであって作者でもある、ということを存分に発揮して軌道修正とかしていけるのも楽しいですね。</p>
+<p>そんなこんなで書いたコードなので初期の実装意味不明すぎることもあり、ちゃんと設計したほうがいいんじゃない、っていうことも一応考えてはいる。<br>
+でも設計が得意ではないので、とにかくいろいろ考えてリファクタリングしてみよう～っていうのもこの機能改修に含めてみるつもり。<br>
+まずはシステムの中身を考えてみた感じCDなので手続き型みたいなものでも良さそうかなと思っていて、ざっくり抽出、変換、出力（保存）みたいな3ステップにすれば良かったりしないかなあって雑に描いているところ。<br>
+多分UIも若干変わると思うので、どこかでこのアドベントカレンダーの見た目が変わったら進んだんかな？と思ってもらえるようにしたい。</p>
+<p>そんなこんなで一日目予定の記事を書いてみました。<br>
+じゃあまた、明日。</p>
 <hr>
 <p>って数日前に書いた記事なんだけどテンション低いっていうかまともな文章だな……</p>
 <h2 id="tags">tags</h2>
@@ -33,5 +47,17 @@
 <li>Advent Calendar</li>
 <li>Marco3jp Advent Calendar</li>
 <li>Marco3jp Advent Calendar 2021</li>
-</ul>
-</article>  <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html>
+</ul> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+    const cushionMessage = document.querySelector(".sushion-message")
+
+    const adventureButton = document.querySelector("#go-adventure")
+    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+
+    adventureButton.addEventListener("click", () => {
+        cushionMessage.classList.add("hidden")
+    })
+
+    yahooKidsButton.addEventListener("click", () => {
+        window.location.href = "https://kids.yahoo.co.jp/"
+    })
+</script>

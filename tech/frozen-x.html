@@ -1,15 +1,21 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.ab712936.css" /><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper">  <article><h1 id="frozen-x">Frozen X</h1>
-<p>初回リリース: 2021-09-01<br><a href="https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md">https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md</a> に本体があるはずなので、履歴等はそちらから確認できる。</p>
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.8a769db9.css" />
+<style>.light .sushion-message{background:#FAFAFA;color:#212121}.dark .sushion-message{background:#212121;color:#fafafa}
+</style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
+</script></head> <body class="dark"> <main id="wrapper"> <h1 id="frozen-x">Frozen X</h1>
+<p>初回リリース: 2021-09-01<br>
+<a href="https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md">https://github.com/Marco3jp/documents/tree/master/md/tech/frozen-x.md</a> に本体があるはずなので、履歴等はそちらから確認できる。</p>
 <h2 id="はじめに">はじめに</h2>
-<p>これは私が遭遇した怪奇現象と、その解決に至るまでの道のりを示したものである。<br>ただし確実に直ったことを証明したわけではないので、執筆後に再発した場合はまた長い道のりを歩む予定である。</p>
+<p>これは私が遭遇した怪奇現象と、その解決に至るまでの道のりを示したものである。<br>
+ただし確実に直ったことを証明したわけではないので、執筆後に再発した場合はまた長い道のりを歩む予定である。</p>
 <h2 id="怪奇現象の概要">怪奇現象の概要</h2>
 <ul>
-<li>ランダムなタイミングで操作ができなくなる<ul>
+<li>ランダムなタイミングで操作ができなくなる
+<ul>
 <li>本当にランダムなのかは不明ではあるけど、体感だとランダム</li>
 </ul>
 </li>
-<li>特徴<ul>
+<li>特徴
+<ul>
 <li>マウスカーソルのみ動く</li>
 <li>描画は更新されている（動画などは流れ続ける）</li>
 <li>音声も流れる</li>
@@ -28,16 +34,20 @@
 <li>キーボード Logicool G105</li>
 <li>モニター構成 43UN700-B(DP to DP), 24GN650-B(HDMI to HDMI)</li>
 <li>他SATA 未マウントを含むHDD数枚、未マウントSSD</li>
-<li>他USB<ul>
-<li>二台のデスクトップ機でデバイス切り替えを容易にするため<ul>
+<li>他USB
+<ul>
+<li>二台のデスクトップ機でデバイス切り替えを容易にするため
+<ul>
 <li><a href="https://www.amazon.co.jp/gp/product/B072R16Z6S">https://www.amazon.co.jp/gp/product/B072R16Z6S</a></li>
 </ul>
 </li>
-<li>MBのLANがLinux側で扱えたり扱えなかったり謎なのでUSBでつなげて動かしている<ul>
+<li>MBのLANがLinux側で扱えたり扱えなかったり謎なのでUSBでつなげて動かしている
+<ul>
 <li><a href="https://www.amazon.co.jp/gp/product/B013G4C8RE">https://www.amazon.co.jp/gp/product/B013G4C8RE</a></li>
 </ul>
 </li>
-<li>デジタルオーディオ出力をUSB経由させてデバイス切り替えに乗せるため<ul>
+<li>デジタルオーディオ出力をUSB経由させてデバイス切り替えに乗せるため
+<ul>
 <li><a href="https://www.amazon.co.jp/gp/product/B07NCSNHPG">https://www.amazon.co.jp/gp/product/B07NCSNHPG</a></li>
 </ul>
 </li>
@@ -55,220 +65,240 @@
 </ul>
 <h3 id="調査に使ったコマンドとか">調査に使ったコマンドとか</h3>
 <ul>
-<li><a href="https://archlinux.org/packages/extra/x86_64/xorg-xinput/">xorg-xinput</a>に含まれるxinput<ul>
+<li><a href="https://archlinux.org/packages/extra/x86_64/xorg-xinput/">xorg-xinput</a>に含まれるxinput
+<ul>
 <li>イベントが発火しているかの確認</li>
 </ul>
 </li>
-<li>/var/log/Xorg.0.log<ul>
+<li>/var/log/Xorg.0.log
+<ul>
 <li>下記するエラーログ</li>
 <li>ここから対応方法までたどり着けた</li>
 </ul>
 </li>
-<li>journalctl<ul>
+<li>journalctl
+<ul>
 <li>当たり前ではあるけど一応、手がかりすら見つからなかった</li>
 </ul>
 </li>
 </ul>
 <h2 id="エラーログ">エラーログ</h2>
-<pre><code>[350768.163] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow
-[350789.534] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 27ms, your system is too slow
-[350808.110] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-2ms), your system is too slow
-[350808.110] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-15ms), your system is too slow
-[350818.251] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow
-[350818.334] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow
-[350818.334] (EE) event4  - Logitech G703 LS: WARNING: log rate limit exceeded (5 msgs per 60min). Discarding future messages.
-[351151.536] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-4ms), your system is too slow
-[351151.536] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-17ms), your system is too slow
-[351152.933] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-4ms), your system is too slow
-[351205.092] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-0ms), your system is too slow
-[351205.092] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-13ms), your system is too slow
-[351261.099] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-14ms), your system is too slow
-[351261.099] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-27ms), your system is too slow
-[351428.929] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-10ms), your system is too slow
-[351428.929] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-23ms), your system is too slow
-[351431.072] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-6ms), your system is too slow
-[351432.076] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-3ms), your system is too slow
-</code></pre><h2 id="対応">対応</h2>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[350768.163] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow</span></span>
+<span class="line"><span>[350789.534] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 27ms, your system is too slow</span></span>
+<span class="line"><span>[350808.110] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-2ms), your system is too slow</span></span>
+<span class="line"><span>[350808.110] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-15ms), your system is too slow</span></span>
+<span class="line"><span>[350818.251] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow</span></span>
+<span class="line"><span>[350818.334] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow</span></span>
+<span class="line"><span>[350818.334] (EE) event4  - Logitech G703 LS: WARNING: log rate limit exceeded (5 msgs per 60min). Discarding future messages.</span></span>
+<span class="line"><span>[351151.536] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-4ms), your system is too slow</span></span>
+<span class="line"><span>[351151.536] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-17ms), your system is too slow</span></span>
+<span class="line"><span>[351152.933] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-4ms), your system is too slow</span></span>
+<span class="line"><span>[351205.092] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-0ms), your system is too slow</span></span>
+<span class="line"><span>[351205.092] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-13ms), your system is too slow</span></span>
+<span class="line"><span>[351261.099] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-14ms), your system is too slow</span></span>
+<span class="line"><span>[351261.099] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-27ms), your system is too slow</span></span>
+<span class="line"><span>[351428.929] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-10ms), your system is too slow</span></span>
+<span class="line"><span>[351428.929] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-23ms), your system is too slow</span></span>
+<span class="line"><span>[351431.072] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-6ms), your system is too slow</span></span>
+<span class="line"><span>[351432.076] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-3ms), your system is too slow</span></span></code></pre>
+<h2 id="対応">対応</h2>
 <p>このエラーから対応したことについてのまとめ。エラーには『scheduled expiry is in the past』と『event processing lagging』の2つがある。</p>
 <h3 id="scheduled-expiry-is-in-the-past">scheduled expiry is in the past</h3>
-<p>こっちは以下のRedditスレッドがかなり参考になりそう<br><a href="https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/">https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/</a></p>
-<p>チャタリング防止かわからんけどマウス側の機能？でタイマーが信頼できなくなることがあるようで、そこをどう扱うかという話。<br>libinputのドキュメントにちゃんと設定の書き方とかがあったので、以下のリンクを読みつつ、最終的に下記のようなファイルを作った。</p>
+<p>こっちは以下のRedditスレッドがかなり参考になりそう<br>
+<a href="https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/">https://www.reddit.com/r/archlinux/comments/i6mhrl/xorg_using_100_of_1_cpu_core_and_mouse/</a></p>
+<p>チャタリング防止かわからんけどマウス側の機能？でタイマーが信頼できなくなることがあるようで、そこをどう扱うかという話。<br>
+libinputのドキュメントにちゃんと設定の書き方とかがあったので、以下のリンクを読みつつ、最終的に下記のようなファイルを作った。</p>
 <p><a href="https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html">https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html</a></p>
 <p><code>/etc/libinput/local-overrides.quirks</code></p>
-<pre><code class="hljs language-ini"><span class="hljs-section">[Logitech G703 LS]</span>
-<span class="hljs-attr">MatchName</span>=Logitech G703 LS
-<span class="hljs-attr">ModelBouncingKeys</span>=<span class="hljs-number">1</span>
-</code></pre><h3 id="event-processing-lagging">event processing lagging</h3>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#F8F8F2">[Logitech G703 LS]</span></span>
+<span class="line"><span style="color:#FF79C6">MatchName=</span><span style="color:#F8F8F2">Logitech G703 LS</span></span>
+<span class="line"><span style="color:#FF79C6">ModelBouncingKeys=</span><span style="color:#F8F8F2">1</span></span></code></pre>
+<h3 id="event-processing-lagging">event processing lagging</h3>
 <p>上記対応後も以下のように出続ける</p>
-<pre><code>[   124.525] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 13ms, your system is too slow
-[   130.094] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 32ms, your system is too slow
-[   130.761] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 36ms, your system is too slow
-[   180.844] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 11ms, your system is too slow
-[   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.
-</code></pre><p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[   124.525] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 13ms, your system is too slow</span></span>
+<span class="line"><span>[   130.094] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 32ms, your system is too slow</span></span>
+<span class="line"><span>[   130.761] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 36ms, your system is too slow</span></span>
+<span class="line"><span>[   180.844] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 11ms, your system is too slow</span></span>
+<span class="line"><span>[   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.</span></span></code></pre>
+<p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>
+他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
 <h2 id="対応後に起こっている現象">対応後に起こっている現象</h2>
 <p>※以前まで起きていたかは不明なので、対応との関係性は断言できない</p>
 <h3 id="マウスがたまに動かなくなる">マウスがたまに動かなくなる</h3>
-<p>理由は不明だが、マウスがたまに動かなくなることがある。<br>以前のランダムとは異なって、大体が放置した後に操作できなくなることが多い印象。</p>
+<p>理由は不明だが、マウスがたまに動かなくなることがある。<br>
+以前のランダムとは異なって、大体が放置した後に操作できなくなることが多い印象。</p>
 <h3 id="マウスを有線接続に変えると接続後の1秒くらいしか操作できない">マウスを有線接続に変えると接続後の1秒くらいしか操作できない</h3>
-<p>こちらも理由が不明だが、マウスを無線接続から有線接続切り替えると操作できなくなる。<br>以下にログは置いておくが、無線で使えば対応できるのでそうしていて根本解決はしていない。（が、解決できるに越したことはない）</p>
+<p>こちらも理由が不明だが、マウスを無線接続から有線接続切り替えると操作できなくなる。<br>
+以下にログは置いておくが、無線で使えば対応できるのでそうしていて根本解決はしていない。（が、解決できるに越したことはない）</p>
 <h4 id="ログ">ログ</h4>
 <p>無線接続時</p>
-<pre><code>[704092.501] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/mouse0)
-[704092.501] (II) No input driver specified, ignoring this device.
-[704092.501] (II) This device may have been added with another device file.
-[704092.545] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/event23)
-[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass &quot;libinput keyboard catchall&quot;
-[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass &quot;system-keyboard&quot;
-[704092.545] (II) Using input driver &#x27;libinput&#x27; for &#x27;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&#x27;
-[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events
-[704092.545] (**) Option &quot;Device&quot; &quot;/dev/input/event23&quot;
-[704092.545] (**) Option &quot;_source&quot; &quot;server/udev&quot;
-[704092.546] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Keyboard
-[704092.547] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a keyboard
-[704092.547] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed
-[704092.564] (II) libinput: Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: needs a virtual subdevice
-[704092.564] (**) Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/event23&quot;
-[704092.564] (II) XINPUT: Adding extended input device &quot;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&quot; (type: MOUSE, id 12)
-[704092.565] (**) Option &quot;AccelerationScheme&quot; &quot;none&quot;
-[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) selected scheme none/0
-[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration factor: 2.000
-[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration threshold: 4
-[704092.566] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Keyboard
-[704092.566] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a keyboard
-[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass &quot;libinput keyboard catchall&quot;
-[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass &quot;system-keyboard&quot;
-[704092.567] (II) Using input driver &#x27;libinput&#x27; for &#x27;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&#x27;
-[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events
-[704092.567] (**) Option &quot;Device&quot; &quot;/dev/input/event23&quot;
-[704092.567] (**) Option &quot;_source&quot; &quot;_driver/libinput&quot;
-[704092.567] (II) libinput: Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is a virtual subdevice
-[704092.567] (**) Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/event23&quot;
-[704092.567] (II) XINPUT: Adding extended input device &quot;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&quot; (type: KEYBOARD, id 14)
-[704092.567] (**) Option &quot;xkb_model&quot; &quot;jp106&quot;
-[704092.567] (**) Option &quot;xkb_layout&quot; &quot;jp&quot;
-[704092.591] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/event22)
-[704092.591] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass &quot;libinput pointer catchall&quot;
-[704092.591] (II) Using input driver &#x27;libinput&#x27; for &#x27;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&#x27;
-[704092.591] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events
-[704092.591] (**) Option &quot;Device&quot; &quot;/dev/input/event22&quot;
-[704092.591] (**) Option &quot;_source&quot; &quot;server/udev&quot;
-[704092.648] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse
-[704092.649] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer
-[704092.649] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed
-[704092.681] (**) Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.0/0003:046D:C090.0026/input/input53/event22&quot;
-[704092.681] (II) XINPUT: Adding extended input device &quot;Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO&quot; (type: MOUSE, id 15)
-[704092.681] (**) Option &quot;AccelerationScheme&quot; &quot;none&quot;
-[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) selected scheme none/0
-[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration factor: 2.000
-[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration threshold: 4
-[704092.738] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse
-[704092.739] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer
-[704092.768] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed
-</code></pre><p>無線接続すると以下</p>
-<pre><code>[704205.713] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/mouse0)
-[704205.713] (**) Logitech G703 LS: Applying InputClass &quot;system-keyboard&quot;
-[704205.713] (II) No input driver specified, ignoring this device.
-[704205.713] (II) This device may have been added with another device file.
-[704205.738] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/event22)
-[704205.738] (**) Logitech G703 LS: Applying InputClass &quot;libinput pointer catchall&quot;
-[704205.738] (**) Logitech G703 LS: Applying InputClass &quot;libinput keyboard catchall&quot;
-[704205.738] (**) Logitech G703 LS: Applying InputClass &quot;system-keyboard&quot;
-[704205.738] (II) Using input driver &#x27;libinput&#x27; for &#x27;Logitech G703 LS&#x27;
-[704205.738] (**) Logitech G703 LS: always reports core events
-[704205.738] (**) Option &quot;Device&quot; &quot;/dev/input/event22&quot;
-[704205.738] (**) Option &quot;_source&quot; &quot;server/udev&quot;
-[704205.739] (II) event22 - Logitech G703 LS: is tagged by udev as: Keyboard Mouse
-[704205.739] (II) event22 - Logitech G703 LS: device is a pointer
-[704205.739] (II) event22 - Logitech G703 LS: device is a keyboard
-[704205.739] (II) event22 - Logitech G703 LS: device removed
-[704205.754] (II) libinput: Logitech G703 LS: needs a virtual subdevice
-[704205.754] (**) Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/event22&quot;
-[704205.754] (II) XINPUT: Adding extended input device &quot;Logitech G703 LS&quot; (type: MOUSE, id 12)
-[704205.755] (**) Option &quot;AccelerationScheme&quot; &quot;none&quot;
-[704205.755] (**) Logitech G703 LS: (accel) selected scheme none/0
-[704205.755] (**) Logitech G703 LS: (accel) acceleration factor: 2.000
-[704205.755] (**) Logitech G703 LS: (accel) acceleration threshold: 4
-[704205.756] (II) event22 - Logitech G703 LS: is tagged by udev as: Keyboard Mouse
-[704205.756] (II) event22 - Logitech G703 LS: device is a pointer
-[704205.756] (II) event22 - Logitech G703 LS: device is a keyboard
-[704205.757] (**) Logitech G703 LS: Applying InputClass &quot;libinput pointer catchall&quot;
-[704205.757] (**) Logitech G703 LS: Applying InputClass &quot;libinput keyboard catchall&quot;
-[704205.757] (**) Logitech G703 LS: Applying InputClass &quot;system-keyboard&quot;
-[704205.757] (II) Using input driver &#x27;libinput&#x27; for &#x27;Logitech G703 LS&#x27;
-[704205.757] (**) Logitech G703 LS: always reports core events
-[704205.757] (**) Option &quot;Device&quot; &quot;/dev/input/event22&quot;
-[704205.757] (**) Option &quot;_source&quot; &quot;_driver/libinput&quot;
-[704205.757] (II) libinput: Logitech G703 LS: is a virtual subdevice
-[704205.757] (**) Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/event22&quot;
-[704205.757] (II) XINPUT: Adding extended input device &quot;Logitech G703 LS&quot; (type: KEYBOARD, id 14)
-[704205.757] (**) Option &quot;xkb_model&quot; &quot;jp106&quot;
-[704205.757] (**) Option &quot;xkb_layout&quot; &quot;jp&quot;
-</code></pre><p>差分で見ると以下（デバイス名、イベント名、行頭などを調整しているので、Rawじゃないとだめというなら各自で↑のやつ使ってください）</p>
-<pre><code class="hljs language-diff">config/udev: Adding input device DEVICE_NAME (/dev/input/mouse0)
-<span class="hljs-deletion">-DEVICE_NAME: Applying InputClass &quot;system-keyboard&quot;</span>
-No input driver specified, ignoring this device.
-This device may have been added with another device file.
-<span class="hljs-deletion">-config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_A)</span>
-<span class="hljs-deletion">-DEVICE_NAME: Applying InputClass &quot;libinput pointer catchall&quot;</span>
-<span class="hljs-addition">+config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_B)</span>
-DEVICE_NAME: Applying InputClass &quot;libinput keyboard catchall&quot;
-DEVICE_NAME: Applying InputClass &quot;system-keyboard&quot;
-Using input driver &#x27;libinput&#x27; for &#x27;DEVICE_NAME&#x27;
-DEVICE_NAME: always reports core events
-<span class="hljs-deletion">-Option &quot;Device&quot; &quot;/dev/input/EVENT_A&quot;</span>
-<span class="hljs-addition">+Option &quot;Device&quot; &quot;/dev/input/EVENT_B&quot;</span>
-Option &quot;_source&quot; &quot;server/udev&quot;
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: is tagged by udev as: Keyboard Mouse</span>
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: device is a pointer</span>
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: device is a keyboard</span>
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: device removed</span>
-<span class="hljs-addition">+EVENT_B - DEVICE_NAME: is tagged by udev as: Keyboard</span>
-<span class="hljs-addition">+EVENT_B - DEVICE_NAME: device is a keyboard</span>
-<span class="hljs-addition">+EVENT_B - DEVICE_NAME: device removed</span>
-libinput: DEVICE_NAME: needs a virtual subdevice
-<span class="hljs-deletion">-Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/EVENT_A&quot;</span>
-<span class="hljs-addition">+Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/EVENT_B&quot;</span>
-XINPUT: Adding extended input device &quot;DEVICE_NAME&quot; (type: MOUSE, id 12)
-Option &quot;AccelerationScheme&quot; &quot;none&quot;
-DEVICE_NAME: (accel) selected scheme none/0
-DEVICE_NAME: (accel) acceleration factor: 2.000
-DEVICE_NAME: (accel) acceleration threshold: 4
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: is tagged by udev as: Keyboard Mouse</span>
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: device is a pointer</span>
-<span class="hljs-deletion">-EVENT_A - DEVICE_NAME: device is a keyboard</span>
-<span class="hljs-deletion">-DEVICE_NAME: Applying InputClass &quot;libinput pointer catchall&quot;</span>
-<span class="hljs-addition">+EVENT_B - DEVICE_NAME: is tagged by udev as: Keyboard</span>
-<span class="hljs-addition">+EVENT_B - DEVICE_NAME: device is a keyboard</span>
-DEVICE_NAME: Applying InputClass &quot;libinput keyboard catchall&quot;
-DEVICE_NAME: Applying InputClass &quot;system-keyboard&quot;
-Using input driver &#x27;libinput&#x27; for &#x27;DEVICE_NAME&#x27;
-DEVICE_NAME: always reports core events
-<span class="hljs-deletion">-Option &quot;Device&quot; &quot;/dev/input/EVENT_A&quot;</span>
-<span class="hljs-addition">+Option &quot;Device&quot; &quot;/dev/input/EVENT_B&quot;</span>
-Option &quot;_source&quot; &quot;_driver/libinput&quot;
-libinput: DEVICE_NAME: is a virtual subdevice
-<span class="hljs-deletion">-Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/EVENT_A&quot;</span>
-<span class="hljs-addition">+Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/EVENT_B&quot;</span>
-XINPUT: Adding extended input device &quot;DEVICE_NAME&quot; (type: KEYBOARD, id 14)
-Option &quot;xkb_model&quot; &quot;jp106&quot;
-Option &quot;xkb_layout&quot; &quot;jp&quot;
-<span class="hljs-addition">+config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_A)</span>
-<span class="hljs-addition">+DEVICE_NAME: Applying InputClass &quot;libinput pointer catchall&quot;</span>
-<span class="hljs-addition">+Using input driver &#x27;libinput&#x27; for &#x27;DEVICE_NAME&#x27;</span>
-<span class="hljs-addition">+DEVICE_NAME: always reports core events</span>
-<span class="hljs-addition">+Option &quot;Device&quot; &quot;/dev/input/EVENT_A&quot;</span>
-<span class="hljs-addition">+Option &quot;_source&quot; &quot;server/udev&quot;</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: is tagged by udev as: Mouse</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: device is a pointer</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: device removed</span>
-<span class="hljs-addition">+Option &quot;config_info&quot; &quot;udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.0/0003:046D:C090.0026/input/input53/EVENT_A&quot;</span>
-<span class="hljs-addition">+XINPUT: Adding extended input device &quot;DEVICE_NAME&quot; (type: MOUSE, id 15)</span>
-<span class="hljs-addition">+Option &quot;AccelerationScheme&quot; &quot;none&quot;</span>
-<span class="hljs-addition">+DEVICE_NAME: (accel) selected scheme none/0</span>
-<span class="hljs-addition">+DEVICE_NAME: (accel) acceleration factor: 2.000</span>
-<span class="hljs-addition">+DEVICE_NAME: (accel) acceleration threshold: 4</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: is tagged by udev as: Mouse</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: device is a pointer</span>
-<span class="hljs-addition">+EVENT_A - DEVICE_NAME: device removed</span>
-</code></pre></article> <link rel="stylesheet" href="./highlight.css"> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[704092.501] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/mouse0)</span></span>
+<span class="line"><span>[704092.501] (II) No input driver specified, ignoring this device.</span></span>
+<span class="line"><span>[704092.501] (II) This device may have been added with another device file.</span></span>
+<span class="line"><span>[704092.545] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/event23)</span></span>
+<span class="line"><span>[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span>[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span>[704092.545] (II) Using input driver 'libinput' for 'Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO'</span></span>
+<span class="line"><span>[704092.545] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events</span></span>
+<span class="line"><span>[704092.545] (**) Option "Device" "/dev/input/event23"</span></span>
+<span class="line"><span>[704092.545] (**) Option "_source" "server/udev"</span></span>
+<span class="line"><span>[704092.546] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Keyboard</span></span>
+<span class="line"><span>[704092.547] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a keyboard</span></span>
+<span class="line"><span>[704092.547] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed</span></span>
+<span class="line"><span>[704092.564] (II) libinput: Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: needs a virtual subdevice</span></span>
+<span class="line"><span>[704092.564] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/event23"</span></span>
+<span class="line"><span>[704092.564] (II) XINPUT: Adding extended input device "Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO" (type: MOUSE, id 12)</span></span>
+<span class="line"><span>[704092.565] (**) Option "AccelerationScheme" "none"</span></span>
+<span class="line"><span>[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) selected scheme none/0</span></span>
+<span class="line"><span>[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration factor: 2.000</span></span>
+<span class="line"><span>[704092.565] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration threshold: 4</span></span>
+<span class="line"><span>[704092.566] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Keyboard</span></span>
+<span class="line"><span>[704092.566] (II) event23 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a keyboard</span></span>
+<span class="line"><span>[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span>[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span>[704092.567] (II) Using input driver 'libinput' for 'Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO'</span></span>
+<span class="line"><span>[704092.567] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events</span></span>
+<span class="line"><span>[704092.567] (**) Option "Device" "/dev/input/event23"</span></span>
+<span class="line"><span>[704092.567] (**) Option "_source" "_driver/libinput"</span></span>
+<span class="line"><span>[704092.567] (II) libinput: Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is a virtual subdevice</span></span>
+<span class="line"><span>[704092.567] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/event23"</span></span>
+<span class="line"><span>[704092.567] (II) XINPUT: Adding extended input device "Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO" (type: KEYBOARD, id 14)</span></span>
+<span class="line"><span>[704092.567] (**) Option "xkb_model" "jp106"</span></span>
+<span class="line"><span>[704092.567] (**) Option "xkb_layout" "jp"</span></span>
+<span class="line"><span>[704092.591] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/event22)</span></span>
+<span class="line"><span>[704092.591] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span>[704092.591] (II) Using input driver 'libinput' for 'Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO'</span></span>
+<span class="line"><span>[704092.591] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: always reports core events</span></span>
+<span class="line"><span>[704092.591] (**) Option "Device" "/dev/input/event22"</span></span>
+<span class="line"><span>[704092.591] (**) Option "_source" "server/udev"</span></span>
+<span class="line"><span>[704092.648] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse</span></span>
+<span class="line"><span>[704092.649] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer</span></span>
+<span class="line"><span>[704092.649] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed</span></span>
+<span class="line"><span>[704092.681] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.0/0003:046D:C090.0026/input/input53/event22"</span></span>
+<span class="line"><span>[704092.681] (II) XINPUT: Adding extended input device "Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO" (type: MOUSE, id 15)</span></span>
+<span class="line"><span>[704092.681] (**) Option "AccelerationScheme" "none"</span></span>
+<span class="line"><span>[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) selected scheme none/0</span></span>
+<span class="line"><span>[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration factor: 2.000</span></span>
+<span class="line"><span>[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration threshold: 4</span></span>
+<span class="line"><span>[704092.738] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse</span></span>
+<span class="line"><span>[704092.739] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer</span></span>
+<span class="line"><span>[704092.768] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed</span></span></code></pre>
+<p>無線接続すると以下</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[704205.713] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/mouse0)</span></span>
+<span class="line"><span>[704205.713] (**) Logitech G703 LS: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span>[704205.713] (II) No input driver specified, ignoring this device.</span></span>
+<span class="line"><span>[704205.713] (II) This device may have been added with another device file.</span></span>
+<span class="line"><span>[704205.738] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/event22)</span></span>
+<span class="line"><span>[704205.738] (**) Logitech G703 LS: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span>[704205.738] (**) Logitech G703 LS: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span>[704205.738] (**) Logitech G703 LS: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span>[704205.738] (II) Using input driver 'libinput' for 'Logitech G703 LS'</span></span>
+<span class="line"><span>[704205.738] (**) Logitech G703 LS: always reports core events</span></span>
+<span class="line"><span>[704205.738] (**) Option "Device" "/dev/input/event22"</span></span>
+<span class="line"><span>[704205.738] (**) Option "_source" "server/udev"</span></span>
+<span class="line"><span>[704205.739] (II) event22 - Logitech G703 LS: is tagged by udev as: Keyboard Mouse</span></span>
+<span class="line"><span>[704205.739] (II) event22 - Logitech G703 LS: device is a pointer</span></span>
+<span class="line"><span>[704205.739] (II) event22 - Logitech G703 LS: device is a keyboard</span></span>
+<span class="line"><span>[704205.739] (II) event22 - Logitech G703 LS: device removed</span></span>
+<span class="line"><span>[704205.754] (II) libinput: Logitech G703 LS: needs a virtual subdevice</span></span>
+<span class="line"><span>[704205.754] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/event22"</span></span>
+<span class="line"><span>[704205.754] (II) XINPUT: Adding extended input device "Logitech G703 LS" (type: MOUSE, id 12)</span></span>
+<span class="line"><span>[704205.755] (**) Option "AccelerationScheme" "none"</span></span>
+<span class="line"><span>[704205.755] (**) Logitech G703 LS: (accel) selected scheme none/0</span></span>
+<span class="line"><span>[704205.755] (**) Logitech G703 LS: (accel) acceleration factor: 2.000</span></span>
+<span class="line"><span>[704205.755] (**) Logitech G703 LS: (accel) acceleration threshold: 4</span></span>
+<span class="line"><span>[704205.756] (II) event22 - Logitech G703 LS: is tagged by udev as: Keyboard Mouse</span></span>
+<span class="line"><span>[704205.756] (II) event22 - Logitech G703 LS: device is a pointer</span></span>
+<span class="line"><span>[704205.756] (II) event22 - Logitech G703 LS: device is a keyboard</span></span>
+<span class="line"><span>[704205.757] (**) Logitech G703 LS: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span>[704205.757] (**) Logitech G703 LS: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span>[704205.757] (**) Logitech G703 LS: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span>[704205.757] (II) Using input driver 'libinput' for 'Logitech G703 LS'</span></span>
+<span class="line"><span>[704205.757] (**) Logitech G703 LS: always reports core events</span></span>
+<span class="line"><span>[704205.757] (**) Option "Device" "/dev/input/event22"</span></span>
+<span class="line"><span>[704205.757] (**) Option "_source" "_driver/libinput"</span></span>
+<span class="line"><span>[704205.757] (II) libinput: Logitech G703 LS: is a virtual subdevice</span></span>
+<span class="line"><span>[704205.757] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/event22"</span></span>
+<span class="line"><span>[704205.757] (II) XINPUT: Adding extended input device "Logitech G703 LS" (type: KEYBOARD, id 14)</span></span>
+<span class="line"><span>[704205.757] (**) Option "xkb_model" "jp106"</span></span>
+<span class="line"><span>[704205.757] (**) Option "xkb_layout" "jp"</span></span></code></pre>
+<p>差分で見ると以下（デバイス名、イベント名、行頭などを調整しているので、Rawじゃないとだめというなら各自で↑のやつ使ってください）</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#F8F8F2">config/udev: Adding input device DEVICE_NAME (/dev/input/mouse0)</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>DEVICE_NAME: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span style="color:#F8F8F2">No input driver specified, ignoring this device.</span></span>
+<span class="line"><span style="color:#F8F8F2">This device may have been added with another device file.</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_A)</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>DEVICE_NAME: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_B)</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span style="color:#F8F8F2">Using input driver 'libinput' for 'DEVICE_NAME'</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: always reports core events</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>Option "Device" "/dev/input/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "Device" "/dev/input/EVENT_B"</span></span>
+<span class="line"><span style="color:#F8F8F2">Option "_source" "server/udev"</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: is tagged by udev as: Keyboard Mouse</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: device is a pointer</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: device is a keyboard</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: device removed</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_B - DEVICE_NAME: is tagged by udev as: Keyboard</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_B - DEVICE_NAME: device is a keyboard</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_B - DEVICE_NAME: device removed</span></span>
+<span class="line"><span style="color:#F8F8F2">libinput: DEVICE_NAME: needs a virtual subdevice</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/EVENT_B"</span></span>
+<span class="line"><span style="color:#F8F8F2">XINPUT: Adding extended input device "DEVICE_NAME" (type: MOUSE, id 12)</span></span>
+<span class="line"><span style="color:#F8F8F2">Option "AccelerationScheme" "none"</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: (accel) selected scheme none/0</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: (accel) acceleration factor: 2.000</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: (accel) acceleration threshold: 4</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: is tagged by udev as: Keyboard Mouse</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: device is a pointer</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>EVENT_A - DEVICE_NAME: device is a keyboard</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>DEVICE_NAME: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_B - DEVICE_NAME: is tagged by udev as: Keyboard</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_B - DEVICE_NAME: device is a keyboard</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: Applying InputClass "libinput keyboard catchall"</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: Applying InputClass "system-keyboard"</span></span>
+<span class="line"><span style="color:#F8F8F2">Using input driver 'libinput' for 'DEVICE_NAME'</span></span>
+<span class="line"><span style="color:#F8F8F2">DEVICE_NAME: always reports core events</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>Option "Device" "/dev/input/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "Device" "/dev/input/EVENT_B"</span></span>
+<span class="line"><span style="color:#F8F8F2">Option "_source" "_driver/libinput"</span></span>
+<span class="line"><span style="color:#F8F8F2">libinput: DEVICE_NAME: is a virtual subdevice</span></span>
+<span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.1/0003:046D:C090.0027/input/input54/EVENT_B"</span></span>
+<span class="line"><span style="color:#F8F8F2">XINPUT: Adding extended input device "DEVICE_NAME" (type: KEYBOARD, id 14)</span></span>
+<span class="line"><span style="color:#F8F8F2">Option "xkb_model" "jp106"</span></span>
+<span class="line"><span style="color:#F8F8F2">Option "xkb_layout" "jp"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>config/udev: Adding input device DEVICE_NAME (/dev/input/EVENT_A)</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: Applying InputClass "libinput pointer catchall"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Using input driver 'libinput' for 'DEVICE_NAME'</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: always reports core events</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "Device" "/dev/input/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "_source" "server/udev"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: is tagged by udev as: Mouse</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device is a pointer</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device removed</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.0/0003:046D:C090.0026/input/input53/EVENT_A"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>XINPUT: Adding extended input device "DEVICE_NAME" (type: MOUSE, id 15)</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>Option "AccelerationScheme" "none"</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: (accel) selected scheme none/0</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: (accel) acceleration factor: 2.000</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: (accel) acceleration threshold: 4</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: is tagged by udev as: Mouse</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device is a pointer</span></span>
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device removed</span></span></code></pre> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+    const cushionMessage = document.querySelector(".sushion-message")
+
+    const adventureButton = document.querySelector("#go-adventure")
+    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+
+    adventureButton.addEventListener("click", () => {
+        cushionMessage.classList.add("hidden")
+    })
+
+    yahooKidsButton.addEventListener("click", () => {
+        window.location.href = "https://kids.yahoo.co.jp/"
+    })
+</script>

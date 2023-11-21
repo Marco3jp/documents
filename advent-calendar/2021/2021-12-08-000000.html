@@ -1,7 +1,10 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.ab712936.css" /><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper">  <article><h1 id="marco3jp-advent-calendar-2021-8日目">Marco3jp Advent Calendar 2021 8日目</h1>
-<p>今年の音楽回。その一弾。<br>まあまずはLastfmくんで今年聞いた曲を見ていきましょ(2021/12/09時点）</p>
-<h2 id="2020年"><a href="https://www.last.fm/user/Marco_utau/library/tracks?from=2020-01-01&to=2020-12-31">2020年</a></h2>
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.8a769db9.css" />
+<style>.light .sushion-message{background:#FAFAFA;color:#212121}.dark .sushion-message{background:#212121;color:#fafafa}
+</style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
+</script></head> <body class="dark"> <main id="wrapper"> <h1 id="marco3jp-advent-calendar-2021-8日目">Marco3jp Advent Calendar 2021 8日目</h1>
+<p>今年の音楽回。その一弾。<br>
+まあまずはLastfmくんで今年聞いた曲を見ていきましょ(2021/12/09時点）</p>
+<h2 id="2020年"><a href="https://www.last.fm/user/Marco_utau/library/tracks?from=2020-01-01&#x26;to=2020-12-31">2020年</a></h2>
 <p>…とその前に2020年を見ていきましょう</p>
 <ol>
 <li>Get Over Dress-code</li>
@@ -15,8 +18,9 @@
 <li>ネオンライト</li>
 <li>さよならモラトリアム</li>
 </ol>
-<h2 id="2021年"><a href="https://www.last.fm/user/Marco_utau/library/tracks?from=2021-01-01&to=2021-12-31">2021年</a></h2>
-<p>んで2021年はこんな感じでした。<br>注意：上記リンクは今年の31日までを集計期間にしているので、もしかするとあと半月で変動あるかもしれません。</p>
+<h2 id="2021年"><a href="https://www.last.fm/user/Marco_utau/library/tracks?from=2021-01-01&#x26;to=2021-12-31">2021年</a></h2>
+<p>んで2021年はこんな感じでした。<br>
+注意：上記リンクは今年の31日までを集計期間にしているので、もしかするとあと半月で変動あるかもしれません。</p>
 <ol>
 <li>せーので跳べって言ってんの! (300位圏外, 2019年発売)</li>
 <li>Get Over Dress-code (昨年1位)</li>
@@ -50,5 +54,19 @@
 <li>2020年: 10218 scrobbles</li>
 <li>2021年: 8717 scrobbles</li>
 </ul>
-<p>という感じで残りの期間を踏まえても500~700 scrobbles近い差がありそうな印象です。<br>……ということでここまでがLastfmに残っていた楽曲データ（ほぼSpotify）でした！<br>アーティストとかアルバムとか、音楽の話はあとN回くらいかけたら書きます。ありがとうございました〜〜〜。</p>
-</article>  <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html>
+<p>という感じで残りの期間を踏まえても500~700 scrobbles近い差がありそうな印象です。<br>
+……ということでここまでがLastfmに残っていた楽曲データ（ほぼSpotify）でした！<br>
+アーティストとかアルバムとか、音楽の話はあとN回くらいかけたら書きます。ありがとうございました〜〜〜。</p> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+    const cushionMessage = document.querySelector(".sushion-message")
+
+    const adventureButton = document.querySelector("#go-adventure")
+    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+
+    adventureButton.addEventListener("click", () => {
+        cushionMessage.classList.add("hidden")
+    })
+
+    yahooKidsButton.addEventListener("click", () => {
+        window.location.href = "https://kids.yahoo.co.jp/"
+    })
+</script>

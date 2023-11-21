@@ -1,5 +1,7 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.ab712936.css" /><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper">  <article><h1>おかね〜</h1>
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.8a769db9.css" />
+<style>.light .sushion-message{background:#FAFAFA;color:#212121}.dark .sushion-message{background:#212121;color:#fafafa}
+</style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
+</script></head> <body class="dark"> <main id="wrapper"> <h1>おかね〜</h1>
 <h2>前置き</h2>
 <p>書いてる人は専門家じゃないので間違ってるかもしれないので、適当にリンク先とか見てね。</p>
 <p>あと、これは扶養周りのチェックがメインなので、おそらく普通に自立されている方には関係ないかもしれないよ。</p>
@@ -35,23 +37,30 @@
     </tr>
     </tbody>
 </table>
-
 <p>※1: 195万円以下: 5%, 330万円以下: 10% - 97500円...</p>
 <p>※2: 内訳: 市民税 8% + 4,400円 県民税 2.025% + 1,800円</p>
-
 <h2>参考</h2>
 <p>所得税：<a href="https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_1.htm">https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_1.htm</a>
 </p>
-<p>住民税：<a
-        href="https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html">https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html</a>
+<p>住民税：<a href="https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html">https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/kojin.html</a>
 </p>
 <p>健康保険：<a href="https://www.nenkin.go.jp/service/kounen/jigyosho-hiho/hihokensha1/20141204-02.html">https://www.nenkin.go.jp/service/kounen/jigyosho-hiho/hihokensha1/20141204-02.html</a>
 </p>
 <p>年金：<a href="https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html">https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html</a>
 </p>
-
 <p>参考：<a href="https://www.lancers.jp/magazine/30074">https://www.lancers.jp/magazine/30074</a></p>
 <p>他にも <a href="https://freee.co.jp">https://freee.co.jp</a> や <a href="https://biz.moneyforward.com">https://biz.moneyforward.com</a>
-    なども記事出してくれてるので参考になった。</p>
+    なども記事出してくれてるので参考になった。</p> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+    const cushionMessage = document.querySelector(".sushion-message")
 
-</article>  <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html>
+    const adventureButton = document.querySelector("#go-adventure")
+    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+
+    adventureButton.addEventListener("click", () => {
+        cushionMessage.classList.add("hidden")
+    })
+
+    yahooKidsButton.addEventListener("click", () => {
+        window.location.href = "https://kids.yahoo.co.jp/"
+    })
+</script>
