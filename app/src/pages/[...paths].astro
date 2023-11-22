@@ -24,15 +24,13 @@ const post = await getEntry("articles", Astro.params.paths);
 const {Content} = await post.render()
 
 ---
-
-
 <style is:global>
-    .light .sushion-message{
+    .light .cushion-message{
         background: #FAFAFA;
         color: #212121;
     }
 
-    .dark .sushion-message{
+    .dark .cushion-message{
         background: #212121;
         color: #FAFAFA;
     }
@@ -40,7 +38,7 @@ const {Content} = await post.render()
 <DefaultLayout>
     {
         post?.data?.cushionMessage ?
-            <div class="sushion-message absolute flex top-0 left-0 w-full h-full justify-center items-center">
+            <div class="cushion-message absolute flex top-0 left-0 w-full h-full justify-center items-center">
                 <div class="flex flex-col max-w-[80%]">
                     {post?.data?.cushionMessage}
                     <div class="flex flex-col mt-8">
