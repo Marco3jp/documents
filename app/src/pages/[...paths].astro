@@ -42,8 +42,12 @@ const {Content} = await post.render()
                 <div class="flex flex-col max-w-[80%]">
                     {post?.data?.cushionMessage}
                     <div class="flex flex-col mt-8">
-                        <button id="go-adventure" class="border rounded py-4 px-2">OK, Go the adventure</button>
-                        <button id="go-yahoo-kids" class="border rounded py-4 px-2 mt-8">Return Yahoo!JP Kids</button>
+                        <button id="cushion-yes" class="border rounded py-4 px-2">{
+                            post?.data?.cushionYes ? post?.data?.cushionYes : "Yes"
+                        }</button>
+                        <a id="cushion-no" class="border rounded py-4 px-2 mt-8 text-center" href={post?.data?.cushionNoHref ? post?.data?.cushionNoHref : "https://google.com"}>{
+                            post?.data?.cushionNo ? post?.data?.cushionNo : "No"
+                        }</a>
                     </div>
                 </div>
             </div> : ""
@@ -53,16 +57,10 @@ const {Content} = await post.render()
 </DefaultLayout>
 
 <script lang="ts">
-    const cushionMessage = document.querySelector(".sushion-message")
-
-    const adventureButton = document.querySelector("#go-adventure")
-    const yahooKidsButton = document.querySelector("#go-yahoo-kids")
+    const cushionMessage = document.querySelector(".cushion-message")
+    const adventureButton = document.querySelector("#cushion-yes")
 
     adventureButton.addEventListener("click", () => {
         cushionMessage.classList.add("hidden")
-    })
-
-    yahooKidsButton.addEventListener("click", () => {
-        window.location.href = "https://kids.yahoo.co.jp/"
     })
 </script>

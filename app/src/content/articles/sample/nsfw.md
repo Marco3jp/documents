@@ -1,5 +1,8 @@
 ---
 cushionMessage: "このページにはnsfwコンテンツがありそうでありません。無駄かもしれませんがこのまま閲覧しますか？"
+cushionYes: "OK, Go the adventure"
+cushionNo: "Return Yahoo!JP Kids"
+cushionNoHref: "https://kids.yahoo.co.jp/"
 ---
 # nsfw article sample
 
