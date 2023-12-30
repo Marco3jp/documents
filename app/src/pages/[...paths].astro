@@ -52,17 +52,22 @@ const {Content} = await post.render()
                 </div>
             </div> : ""
     }
-
-    <Content />
+    <main>
+        <article id="main-article" class={post?.data?.cushionMessage ? "hidden" : ""}>
+            <Content />
+        </article>
+    </main>
 </DefaultLayout>
 
 <script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
+    const mainArticle = document.querySelector("#main-article")
 
-    if(cushionMessage && adventureButton) {
+    if(cushionMessage && adventureButton && mainArticle) {
         adventureButton.addEventListener("click", () => {
             cushionMessage.classList.add("hidden")
+            mainArticle.classList.remove("hidden")
         })
     }
 </script>
