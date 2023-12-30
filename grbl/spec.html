@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.006a8958.css" />
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.2fbc99e8.css" />
 <style>.light .cushion-message{background:#FAFAFA;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
 </style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper"> <h1>grblくんのプロトコルっぽい部分</h1>
+</script></head> <body class="dark"> <div id="wrapper"> <main><article id="main-article" class=""><h1>grblくんのプロトコルっぽい部分</h1>
 <p>TypeScript向けに必要そうな箇所だけ抜いたインターフェイスを書いてます。</p>
 <p>パブリックな場所に置くとDCMA受けそうな予感がするので公開はしません。変数名にも著作権があるという点は否定しないので、こればっかりはすみません。</p>
 <p>ただまあ、私の知り合いに私的利用の範囲で見せる程度ならグレーだと思うので、気になる人は声かけてください。</p>
@@ -47,11 +47,15 @@
     scenarioはnormal_attack_result.jsonのようにArrayで、新しく発動したアビリティが[0]側にあるんですけど、途中に空のArrayが挟み込まれ、それ以降にいつのだかわからないコマンドが出現します。</p>
 <p>なんとなく見た感じだとstatusっぽいんですけど、statusは別にあるんですよね……マジで謎。</p>
 <p>あと、誰が打ったかはposで確認できるんですけど、何個目のアビかは判断できないので、リキャは別途statusから引っ張るしかなさそう。</p>
-<p>ざっくり見た感じだけど、cmd: damage, healさえ追跡すれば誰がどれくらいの値を出したか確認できるっぽい。</p> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+<p>ざっくり見た感じだけど、cmd: damage, healさえ追跡すれば誰がどれくらいの値を出したか確認できるっぽい。</p></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
+    const mainArticle = document.querySelector("#main-article")
 
-    adventureButton.addEventListener("click", () => {
-        cushionMessage.classList.add("hidden")
-    })
+    if(cushionMessage && adventureButton && mainArticle) {
+        adventureButton.addEventListener("click", () => {
+            cushionMessage.classList.add("hidden")
+            mainArticle.classList.remove("hidden")
+        })
+    }
 </script>

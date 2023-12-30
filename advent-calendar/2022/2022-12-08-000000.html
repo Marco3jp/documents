@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.006a8958.css" />
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.2fbc99e8.css" />
 <style>.light .cushion-message{background:#FAFAFA;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
 </style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper"> <h1 id="marco3jp-advent-calendar-day8-今年のlastfm">Marco3jp Advent Calendar day8 今年のLastfm</h1>
+</script></head> <body class="dark"> <div id="wrapper"> <main><article id="main-article" class=""><h1 id="marco3jp-advent-calendar-day8-今年のlastfm">Marco3jp Advent Calendar day8 今年のLastfm</h1>
 <h2 id="まえがき">まえがき</h2>
 <p>今年も色んな曲を聴いたので例年の通りやります。<br>
 ちなみに去年のやつは<a href="https://marco3jp.github.io/documents/advent-calendar/2021/2021-12-08-000000.html">これ</a>です。</p>
@@ -252,11 +252,15 @@
 聴いたトラックの種類<small>（厳密にはメタデータ違いで同じ曲が複数カウントされることはあります）</small>でいうと昨年は3868だったのに対して今年は4886だったらしいので、今年は浅く広くを象徴するような結果だったと言えそうです。<br>
 今年リリースされた楽曲のよかった話は昨日のアドベントカレンダーで話していることになっている（まだ話してないんですけど）ので、もしも投稿されたら見てください！<br>
 サブスクがなければ破産していたので本当にありがとう令和。ありがとうインターネット。<br>
-<small>ちなみにさっきmoraで今年買った音源の金額調べたらSpotifyに一年間で払っている金額の数倍だったので意味がわかりません。あとTSUTAYAで借りたりとか普通にCD買ったりしているので、メインオーディオ環境の総額に近い額を一年で使っていることになってドン引きしてます。音楽業界を応援しています。</small></p> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+<small>ちなみにさっきmoraで今年買った音源の金額調べたらSpotifyに一年間で払っている金額の数倍だったので意味がわかりません。あとTSUTAYAで借りたりとか普通にCD買ったりしているので、メインオーディオ環境の総額に近い額を一年で使っていることになってドン引きしてます。音楽業界を応援しています。</small></p></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
+    const mainArticle = document.querySelector("#main-article")
 
-    adventureButton.addEventListener("click", () => {
-        cushionMessage.classList.add("hidden")
-    })
+    if(cushionMessage && adventureButton && mainArticle) {
+        adventureButton.addEventListener("click", () => {
+            cushionMessage.classList.add("hidden")
+            mainArticle.classList.remove("hidden")
+        })
+    }
 </script>

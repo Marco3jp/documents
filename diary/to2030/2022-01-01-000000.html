@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.006a8958.css" />
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.2fbc99e8.css" />
 <style>.light .cushion-message{background:#FAFAFA;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
 </style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper"> <h1 id="2030年のぼくに2022年より">2030年のぼくに(2022年より)</h1>
+</script></head> <body class="dark"> <div id="wrapper"> <main><article id="main-article" class=""><h1 id="2030年のぼくに2022年より">2030年のぼくに(2022年より)</h1>
 <p>ふと2022年の1月1日の4時くらいに思い立ったのでやってみる。</p>
 <p>2030年、街を歩く人達はみんなマスクをしているでしょうか？<br>
 もうかれこれ2年ほどこの暮らしが続いて馴染んでしまっていて、未来でどうなっているか気になります。<br>
@@ -31,11 +31,15 @@ RiotがMMO作るという話もあったので、もし2030年で遊べていた
 <p>今から8年前を思い返すと、思ったよりも昔じゃないな～って気持ちがあります。てことは、多分8年後も意外とすぐやってくるんじゃないかと思います。<br>
 でもその時の年齢を考えると怖くなってきてしまうので、この8年間は色々形になるものを残さないとやばいな～って思ってます。<br>
 特に何というわけではないけれど、2030年のことを想像して書いてみました。</p>
-<p>今日はどんな世界ですか？</p> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+<p>今日はどんな世界ですか？</p></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
+    const mainArticle = document.querySelector("#main-article")
 
-    adventureButton.addEventListener("click", () => {
-        cushionMessage.classList.add("hidden")
-    })
+    if(cushionMessage && adventureButton && mainArticle) {
+        adventureButton.addEventListener("click", () => {
+            cushionMessage.classList.add("hidden")
+            mainArticle.classList.remove("hidden")
+        })
+    }
 </script>

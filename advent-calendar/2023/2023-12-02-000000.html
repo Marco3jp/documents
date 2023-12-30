@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.006a8958.css" />
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>documents</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.2fbc99e8.css" />
 <style>.light .cushion-message{background:#FAFAFA;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
 </style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
-</script></head> <body class="dark"> <main id="wrapper"> <h1 id="marco3jp-advent-calendar-day2">Marco3jp Advent Calendar day2</h1>
+</script></head> <body class="dark"> <div id="wrapper"> <main><article id="main-article" class=""><h1 id="marco3jp-advent-calendar-day2">Marco3jp Advent Calendar day2</h1>
 <p>#名取がおはようする時絵がついてくる 10 ~ 12月頭まで 好きな回まとめ</p>
 <h2 id="10月">10月</h2>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">夜雑談しよかなとオモテル <a href="https://twitter.com/hashtag/%E5%90%8D%E5%8F%96%E3%81%8C%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86%E3%81%99%E3%82%8B%E6%99%82%E7%B5%B5%E3%81%8C%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B?src=hash&#x26;ref_src=twsrc%5Etfw">#名取がおはようする時絵がついてくる</a> <a href="https://t.co/MyhNfotM2K">pic.twitter.com/MyhNfotM2K</a></p>— 名取さな🍆 (@sana_natori) <a href="https://twitter.com/sana_natori/status/1709336270810558708?ref_src=twsrc%5Etfw">October 3, 2023</a></blockquote>
@@ -39,11 +39,15 @@
 <p>12月負けるな〜〜〜！！！年末（特にクリスマス数日前から大晦日）特有の浮足立って一日一日がすごく軽くなったかのような感覚独特すぎて狂おしいほど好きなんじゃ〜〜〜12月がんばえ〜〜〜！！！！</p>
 <blockquote class="twitter-tweet"><p lang="qme" dir="ltr"><a href="https://twitter.com/hashtag/%E5%90%8D%E5%8F%96%E3%81%8C%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86%E3%81%99%E3%82%8B%E6%99%82%E7%B5%B5%E3%81%8C%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B?src=hash&#x26;ref_src=twsrc%5Etfw">#名取がおはようする時絵がついてくる</a> <a href="https://t.co/AZP5qDmUjV">pic.twitter.com/AZP5qDmUjV</a></p>— 名取さな🍆 (@sana_natori) <a href="https://twitter.com/sana_natori/status/1731434420274667712?ref_src=twsrc%5Etfw">December 3, 2023</a></blockquote>
 <p>ニッコニコで強気な発言大好き。お前をブッ殺すじゃないのはコンプラに配慮できる名取さんの大人らしさが現れていて、17歳でありながらカリスマナースVTuberとして活躍をされている理由がわかりますよね。ライアーダンサー歌って！！！！！</p>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </main> </body></html><script lang="ts">
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
+    const mainArticle = document.querySelector("#main-article")
 
-    adventureButton.addEventListener("click", () => {
-        cushionMessage.classList.add("hidden")
-    })
+    if(cushionMessage && adventureButton && mainArticle) {
+        adventureButton.addEventListener("click", () => {
+            cushionMessage.classList.add("hidden")
+            mainArticle.classList.remove("hidden")
+        })
+    }
 </script>
