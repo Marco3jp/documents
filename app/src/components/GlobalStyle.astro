@@ -82,6 +82,13 @@
         margin-block-end: 2.33em;
     }
 
+    /* モバイルで文字が大きすぎたので調整 */
+    @media (max-width: 768px) {
+        h1 { font-size: 1.5rem; }
+        h2 { font-size: 1.25rem; }
+        h3 { font-size: 1.125rem; }
+    }
+
     hr {
         margin: 15px 75px;
         border: unset;
@@ -119,7 +126,14 @@
         list-style-type: disc;
         margin-block-start: 1em;
         margin-block-end: 1em;
-        padding-inline-start: 40px;
+        padding-inline-start: 2em;
+    }
+
+    /* モバイルのときに横幅を節約したかったので調整 */
+    @media (max-width: 768px) {
+        ul {
+            padding-inline-start: 1em;
+        }
     }
 
     ul ul {
