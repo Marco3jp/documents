@@ -60,7 +60,9 @@ const {Content} = await post.render()
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
 
-    adventureButton.addEventListener("click", () => {
-        cushionMessage.classList.add("hidden")
-    })
+    if(cushionMessage && adventureButton) {
+        adventureButton.addEventListener("click", () => {
+            cushionMessage.classList.add("hidden")
+        })
+    }
 </script>
