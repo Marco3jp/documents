@@ -20,6 +20,12 @@ export async function getStaticPaths(): Promise<{params: { paths: string }, prop
 }
 
 const post = await getEntry("articles", Astro.params.paths);
+const regexResult = /(^# (?<md_title>.*))|(<h1.*>(?<html_title>.*)<\/h1>)/.exec(post.body)
+    const title = regexResult?.groups?.md_title
+        ? regexResult?.groups?.md_title
+        : (regexResult?.groups?.html_title
+            ? regexResult?.groups?.html_title
+            : "no title");
 
 const {Content} = await post.render()
 
@@ -35,7 +41,7 @@ const {Content} = await post.render()
         color: #FAFAFA;
     }
 </style>
-<DefaultLayout>
+<DefaultLayout title={title}>
     {
         post?.data?.cushionMessage ?
             <div class="cushion-message absolute flex top-0 left-0 w-full h-full justify-center items-center">
