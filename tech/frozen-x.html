@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frozen X</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.2fbc99e8.css" />
-<style>.light .cushion-message{background:#FAFAFA;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frozen X</title><base href="/documents/"><link rel="icon" href="./favicon.ico"><link rel="stylesheet" href="/documents/_astro/_paths_.CNQuFXU2.css">
+<style>.light .cushion-message{background:#fafafa;color:#212121}.dark .cushion-message{background:#212121;color:#fafafa}
 </style><script type="module">function e(){document.body.classList.toggle("dark"),document.body.classList.toggle("light")}document.querySelector(".theme-toggler").addEventListener("click",e);
 </script></head> <body class="dark"> <div id="wrapper"> <main><article id="main-article" class=""><h1 id="frozen-x">Frozen X</h1>
 <p>初回リリース: 2021-09-01<br>
@@ -83,7 +83,7 @@
 </li>
 </ul>
 <h2 id="エラーログ">エラーログ</h2>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[350768.163] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[350768.163] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 12ms, your system is too slow</span></span>
 <span class="line"><span>[350789.534] (EE) event4  - Logitech G703 LS: client bug: event processing lagging behind by 27ms, your system is too slow</span></span>
 <span class="line"><span>[350808.110] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-2ms), your system is too slow</span></span>
 <span class="line"><span>[350808.110] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-15ms), your system is too slow</span></span>
@@ -100,7 +100,8 @@
 <span class="line"><span>[351428.929] (EE) client bug: timer event4 debounce: scheduled expiry is in the past (-10ms), your system is too slow</span></span>
 <span class="line"><span>[351428.929] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-23ms), your system is too slow</span></span>
 <span class="line"><span>[351431.072] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-6ms), your system is too slow</span></span>
-<span class="line"><span>[351432.076] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-3ms), your system is too slow</span></span></code></pre>
+<span class="line"><span>[351432.076] (EE) client bug: timer event4 debounce short: scheduled expiry is in the past (-3ms), your system is too slow</span></span>
+<span class="line"><span></span></span></code></pre>
 <h2 id="対応">対応</h2>
 <p>このエラーから対応したことについてのまとめ。エラーには『scheduled expiry is in the past』と『event processing lagging』の2つがある。</p>
 <h3 id="scheduled-expiry-is-in-the-past">scheduled expiry is in the past</h3>
@@ -110,16 +111,18 @@
 libinputのドキュメントにちゃんと設定の書き方とかがあったので、以下のリンクを読みつつ、最終的に下記のようなファイルを作った。</p>
 <p><a href="https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html">https://wayland.freedesktop.org/libinput/doc/latest/device-quirks.html</a></p>
 <p><code>/etc/libinput/local-overrides.quirks</code></p>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#F8F8F2">[Logitech G703 LS]</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#F8F8F2">[Logitech G703 LS]</span></span>
 <span class="line"><span style="color:#FF79C6">MatchName=</span><span style="color:#F8F8F2">Logitech G703 LS</span></span>
-<span class="line"><span style="color:#FF79C6">ModelBouncingKeys=</span><span style="color:#F8F8F2">1</span></span></code></pre>
+<span class="line"><span style="color:#FF79C6">ModelBouncingKeys=</span><span style="color:#F8F8F2">1</span></span>
+<span class="line"></span></code></pre>
 <h3 id="event-processing-lagging">event processing lagging</h3>
 <p>上記対応後も以下のように出続ける</p>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[   124.525] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 13ms, your system is too slow</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[   124.525] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 13ms, your system is too slow</span></span>
 <span class="line"><span>[   130.094] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 32ms, your system is too slow</span></span>
 <span class="line"><span>[   130.761] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 36ms, your system is too slow</span></span>
 <span class="line"><span>[   180.844] (EE) event5  - Logitech G703 LS: client bug: event processing lagging behind by 11ms, your system is too slow</span></span>
-<span class="line"><span>[   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.</span></span></code></pre>
+<span class="line"><span>[   301.856] (II) event5  - Logitech G703 LS: SYN_DROPPED event - some input events have been lost.</span></span>
+<span class="line"><span></span></span></code></pre>
 <p>この状態で使い続けているが上記対応をしたあとは一度も症状が出ておらず、特に問題になっていないのが現状。<br>
 他にも以前はなかった現象も起きているので一応下記にまとめておく。</p>
 <h2 id="対応後に起こっている現象">対応後に起こっている現象</h2>
@@ -132,7 +135,7 @@ libinputのドキュメントにちゃんと設定の書き方とかがあった
 以下にログは置いておくが、無線で使えば対応できるのでそうしていて根本解決はしていない。（が、解決できるに越したことはない）</p>
 <h4 id="ログ">ログ</h4>
 <p>無線接続時</p>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[704092.501] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/mouse0)</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[704092.501] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/mouse0)</span></span>
 <span class="line"><span>[704092.501] (II) No input driver specified, ignoring this device.</span></span>
 <span class="line"><span>[704092.501] (II) This device may have been added with another device file.</span></span>
 <span class="line"><span>[704092.545] (II) config/udev: Adding input device Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO (/dev/input/event23)</span></span>
@@ -182,9 +185,10 @@ libinputのドキュメントにちゃんと設定の書き方とかがあった
 <span class="line"><span>[704092.682] (**) Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: (accel) acceleration threshold: 4</span></span>
 <span class="line"><span>[704092.738] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: is tagged by udev as: Mouse</span></span>
 <span class="line"><span>[704092.739] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device is a pointer</span></span>
-<span class="line"><span>[704092.768] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed</span></span></code></pre>
+<span class="line"><span>[704092.768] (II) event22 - Logitech G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO: device removed</span></span>
+<span class="line"><span></span></span></code></pre>
 <p>無線接続すると以下</p>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span>[704205.713] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/mouse0)</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[704205.713] (II) config/udev: Adding input device Logitech G703 LS (/dev/input/mouse0)</span></span>
 <span class="line"><span>[704205.713] (**) Logitech G703 LS: Applying InputClass "system-keyboard"</span></span>
 <span class="line"><span>[704205.713] (II) No input driver specified, ignoring this device.</span></span>
 <span class="line"><span>[704205.713] (II) This device may have been added with another device file.</span></span>
@@ -221,9 +225,10 @@ libinputのドキュメントにちゃんと設定の書き方とかがあった
 <span class="line"><span>[704205.757] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2.1/3-2.1:1.2/0003:046D:C539.002F/0003:046D:4086.0030/input/input56/event22"</span></span>
 <span class="line"><span>[704205.757] (II) XINPUT: Adding extended input device "Logitech G703 LS" (type: KEYBOARD, id 14)</span></span>
 <span class="line"><span>[704205.757] (**) Option "xkb_model" "jp106"</span></span>
-<span class="line"><span>[704205.757] (**) Option "xkb_layout" "jp"</span></span></code></pre>
+<span class="line"><span>[704205.757] (**) Option "xkb_layout" "jp"</span></span>
+<span class="line"><span></span></span></code></pre>
 <p>差分で見ると以下（デバイス名、イベント名、行頭などを調整しているので、Rawじゃないとだめというなら各自で↑のやつ使ってください）</p>
-<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#F8F8F2">config/udev: Adding input device DEVICE_NAME (/dev/input/mouse0)</span></span>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#F8F8F2">config/udev: Adding input device DEVICE_NAME (/dev/input/mouse0)</span></span>
 <span class="line"><span style="color:#FF5555"><span style="user-select: none;">-</span>DEVICE_NAME: Applying InputClass "system-keyboard"</span></span>
 <span class="line"><span style="color:#F8F8F2">No input driver specified, ignoring this device.</span></span>
 <span class="line"><span style="color:#F8F8F2">This device may have been added with another device file.</span></span>
@@ -288,7 +293,8 @@ libinputのドキュメントにちゃんと設定の書き方とかがあった
 <span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>DEVICE_NAME: (accel) acceleration threshold: 4</span></span>
 <span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: is tagged by udev as: Mouse</span></span>
 <span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device is a pointer</span></span>
-<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device removed</span></span></code></pre></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
+<span class="line"><span style="color:#50FA7B"><span style="user-select: none;">+</span>EVENT_A - DEVICE_NAME: device removed</span></span>
+<span class="line"></span></code></pre></article></main> <div class="absolute top-6 right-8 w-8 y-8 opacity-30 theme-toggler" data-astro-cid-ef2qs43u> <svg viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path fill="currentColor" d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z" data-astro-cid-ef2qs43u></path> </svg> </div>   </div></body></html><script lang="ts">
     const cushionMessage = document.querySelector(".cushion-message")
     const adventureButton = document.querySelector("#cushion-yes")
     const mainArticle = document.querySelector("#main-article")
